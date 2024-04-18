@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import lang from './lang.js';
-import Logo from '../../images/logo.png';
+import Logo from '../../images/starsgames.png';
 import './style.css';
 import Menu from '../menu/Menu.jsx';
 
