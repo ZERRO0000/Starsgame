@@ -3,7 +3,7 @@ import Schema from '../schema/index.js';
 import Controll from './Controll.js';
 
 export default class MongoDB {
-    static #DBNAME = "group8"; //имя базы
+    static #DBNAME = "starsgames"; //имя базы
     static #LOCATION = "mongodb://localhost"; //127.0.0.1
     static #PORT = 27017; //порт
     static #LOGIN; //логин

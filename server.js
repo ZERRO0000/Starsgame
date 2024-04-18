@@ -14,7 +14,7 @@ const PORT = 8000;
 // client.connect().then(mongoClient => {
 //     console.log('DB Connect');
 //     console.log(mongoClient.options.dbName);
-//     const db = mongoClient.db('group8');
+//     const db = mongoClient.db('starsgames');
 //     const collection = db.collection('brands');
 //     console.log(collection);
 // });
