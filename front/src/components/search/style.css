@@ -1,151 +1,158 @@
 .searchPanel {
-    width:100%;
+    width: 100%;
     margin:10px 0;
-    display:flex;
+    display: flex;
 }
 
 .searchPanel label {
-    width:90%;
+    width: 90%;
 }
 
 .searchPanel label input {
-    border: 1px solid #ccc;
-    padding: 10px 15px 10px 40px;
+    border:1px solid #eee;
+    padding:10px 15px 10px 40px;
     line-height: 36px;
-    width: calc(100% - 80px);
+    width: calc(-60px + 100% );
     background: url('./images/search.png') no-repeat 10px 16px;
 }
 
-.searchPanel button{
+.searchPanel button {
     line-height: 36px;
-    padding:10px;
+    width:57.6px;
+    padding:10px 0;
     background: url('./images/filter.png') no-repeat center;
-    width:57px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .overlay {
-    position: fixed;
+    position:fixed;
     top:0;
+    left:-100%;
     right:0;
-    bottom: 0;
-    left: -99999px;
+    bottom:0;
     display:none;
-    opacity:0;
+    opacity:1;
     z-index:10;
-    background: rgba(0,0,0,.8);
-    transition: opacity .3s ease-in;
+    background:rgba(0,0,0,.8);
+    transition: opacity .3s ease;
 }
 
 .modal {
-    opacity:0;
-    left: -99999px;
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-    background: #fff;
-    border:1px solid #ccc;
     width:fit-content;
     height:fit-content;
-    overflow: hidden;
-    z-index: 11;
-    box-shadow: 10px 5px 20px rgba(0,0,0,.2);
-    transition: opacity .3s ease-in;
+    position:fixed;
+    margin:auto;
+    top:0;
+    left: -100%;
+    opacity:0;
+    display:none;
+    right:0;
+    bottom:0;
+    background:#fff;
+    box-shadow: 10px 5px 10px rgba(0,0,0,.25);
+    z-index:11;
+    transition: opacity .3s ease;
+    padding:15px;
 }
 
-.modal.show,
-.overlay.show {
+.overlay.show,
+.modal.show {
+    display:block;
     opacity:1;
     left:0;
-    display:block;
 }
 
 .modal .modal-head {
-    width:100%;
-    padding:10px 0;
-    background:#1976d2;
-    color:#fff;
     text-align: center;
+    padding:13px 0;
+    background-color: #eee;
     position:relative;
 }
 
 .modal .modal-head button {
-    position:absolute;
+    position: absolute;
     width:26px;
-    height:26px;
-    border:1px solid #fff;
-    background: #fff;
-    right:6px;
-    top:6px;  
-    cursor:pointer;  
+    height: 26px;
+    background: transparent;
+    border: none;
+    right:10px;
+    top:11px;
+    cursor: pointer;
 }
 
 .modal .modal-head button:after {
     content: "+";
-    position:absolute;
     rotate: 45deg;
-    font-size: 36px;
-    top: -7px;
-    left: 0;
-    right: 0;
+    position:absolute;
+    font-size:26px;
+    left:0;
+    right:0;
+    top:-3px;
+    transition: all .3s;
+}
+
+.modal .modal-head button:hover {
+    color:red;
+
 }
 
 .modal form {
-    margin:15px;
-
+    position:relative;
+    overflow: hidden;
+    display:block;
 }
 
-.modal form div.label {
-    width:100%;
+.modal div.label {
+    text-align: left;
+    margin:10px 20px;
+    display:flex;
     gap:15px;
-    display:flex;
-}
-
-.modal form .rangeGroup {
-    width: 33.333%;
-}
-
-.modal form .rangeGroup input {
-    width:100%;
-    margin-bottom:10px;
-}
-
-.modal form .rangeGroup datalist {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size:10px;
-    width:100%;
-}
-
-.modal form .rangeGroup datalist .curValue {
-    font-size:12px;
-    font-weight: bold;
 }
 
 .modal .buttons {
     display:flex;
     gap:30px;
     justify-content: space-between;
-    margin-top:20px;
 }
 
-.modal .buttons button {
-    background: #1976d2;
+.modal button {
+    background: #1976D2;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
-    border: none;
-    padding: 12px 15px;
+    border:none;
+    padding:12px 15px;
     cursor: pointer;
 }
 
-.modal .buttons button:hover {
-    background: #1e88e5;
+.modal button:hover {
+    background: #1E88E5;
 }
-.modal .buttons button:disabled {
-    background:#999;
+
+.modal button:disabled {
+    background: #999;
     cursor:not-allowed;
 }
+
+datalist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size:10px;
+    width: 100%;
+  }
+
+  option.curValue {
+    font-size:12px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  input[type="range"] {
+    margin-bottom: 10px;
+    width:100%;
+  }
+
+  .rangeGroup {
+    width:33.33333%;
+  }

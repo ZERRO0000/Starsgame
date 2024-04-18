@@ -1,60 +1,89 @@
-import { useCallback, useState, useEffect } from "react";
-import config from "../../params/config.js";
+import {useState, useCallback, useEffect} from 'react';
+import config from '../../params/config.js';
 import './style.css';
-
 
 export default function Table({nameTable, onChange, query = ''}) {
     const [table, setTable] = useState({
         header: [],
         body: [],
-        sim: {}
+        footer: [],
+        sim: []
     });
+
     const [loading, setLoading] = useState(false);
 
     const fetchTable = useCallback(async () => {
         setLoading(true);
-        const getRequest = window.location.search;
-        console.log(getRequest);
-        let urlRequest = config.api+ nameTable +'/';
+        let getReq = window.location.search;
+        let urlRequest = config.fullApi + nameTable +'/';
 
         if(query != '') {
             urlRequest += '?q=' + query;
         }
 
-        if(getRequest != '' && query == '') {
-            urlRequest += getRequest;
+        if(query == '' && getReq != '') {
+            urlRequest += getReq;
         }
 
         await getFetch(urlRequest);
         setLoading(false);
-    }, [nameTable, onChange, query])
+    }, [nameTable, onChange]);
 
     useEffect(
-        () => {
-            fetchTable()
-        }, [fetchTable] 
+        () => {fetchTable()}, [fetchTable]
     )
 
     async function getFetch(url) {
         const response = await fetch(url);
-        let answer = await response.json();
-
+        const unPreparedData = await response.json();
         const data = {
-            header: answer.schema,
-            body: answer.data,
-            sim: answer.sim
-        }
+            header: unPreparedData.head,
+            body: unPreparedData.data,
+            footer: [],
+            sim: unPreparedData.sim
+        };
 
         setTable(data);
     }
 
+    function getHeader(schema) {
+        let header = [];
+        for(let i in schema) {
+            let obHeader = schema[i];
+
+            obHeader.code = i;
+            if(i === '_id')
+                header.push({loc: 'ID'});
+            else
+                header.push(obHeader);
+        } 
+
+        header.push('');
+
+        return (
+            <tr>
+                {
+                    header.map((item, index) => (
+                        <th key={index} 
+                            data-code={item.code}
+                            onClick={setSort}
+                            className={item.sort ? 'sortable' : null}>
+                                {item.loc}
+                                <span></span>
+                        </th>
+                    ))
+                }
+            </tr>
+        )
+    }
+
     async function setSort(event) {
         let th = event.target;
-        let parent = th.closest('tr');
-        let allTh = parent.querySelectorAll('th');
+        let parentRow = th.closest('tr');
+        let allTh = parentRow.querySelectorAll('th');
         let order = th.classList.contains('DESC') ? 'DESC' : 'ASC';
-        let code = th.dataset.code;
-        let url = config.api+ nameTable +'/?sort=' + code + '&order=' + order;
+        let code = event.target.dataset.code;
+        let url = config.fullApi + nameTable + '/?sort=' + code + '&order=' + order;
 
         th.classList.add(order);
 
@@ -69,91 +98,86 @@ export default function Table({nameTable, onChange, query = ''}) {
             th.classList.add('ASC');
         }
 
+        // allTh.forEach(item => {
+        //     if(item.dataset.code != code) {
+        //         if(item.classList.contains('ASC'))
+        //             th.classList.remove('ASC');
+
+        //         if(item.classList.contains('DESC'))
+        //             th.classList.remove('DESC');
+        //     }
+        // });
     }
 
-    async function dropElement(key) {
-        const url = config.api+ nameTable +'/' + key.target.value + '/';
-        const c = window.confirm('Уверены?');
-        if(c) {
-            const response = await fetch(url);
-            let answer = response.status;
+    // function getRow(row, schema) {
+    //     let content = [];
 
-            if(answer === 200) {
-                fetchTable();
-            }
-        }
-    }
+    //     for(let fieldName in row) {
+    //         let el = row[fieldName];
+    //         let schemaType = schema[fieldName].type;
+    //         let value, prefix;
 
-    async function edit(event) {
-        const url = config.api + nameTable + '/?id=' + event.target.value;
-        const response = await fetch(url);
-        const answer = await response.json();
-        console.log(answer);
-        onChange(answer);
-    }
+    //         switch(schemaType) {
+    //             default: 
+    //                 value = el;
+    //             break;
 
-    function getHeader(schema) {
-        let header = [];
-        for(let i in schema) {
-            let obHeader = schema[i];
+    //             case 'Phone':
+    //                 prefix = 'tel:' + el;
+    //                 value = <a href={prefix}>{el}</a>;
+    //             break;
 
-            obHeader.code = i;
+    //             case 'Email':
+    //                 prefix = 'mailto:' + el;
+    //                 value = <a href={prefix}>{el}</a>
+    //             break;
+    //         }
+    //     }
 
-            if(i === '_id') {
-                header.push({loc: 'ID'})
-            }
-            else {
-                header.push(obHeader)
-            }
-        }
+    //     console.log(content);
+        
 
-        header.push({});
-
-        return (
-            <tr>
-                {
-                    header.map((item, index) => (
-                        <th key={index} 
-                        className={item.sort ? 'sortable' : null}
-                        data-code={item.code}
-                        onClick={item.sort ? setSort : null}>
-                            {item.loc}
-                            </th>
-                    ))
-                }
-            </tr>
-        )
-    }
+    //     return (
+    //         <>
+    //             {}
+    //         </>
+    //     )
+    // }
 
     function getContent(col, index, sim, schema) {
-        let value = col;
-        let getIndex = 0;
-        let curSchema = 0;
-
-        for(let i in schema) {
-            if(getIndex === index) {
-                curSchema = schema[i];
-            }
-            getIndex++;
-        }
+        let value = '';
 
         if(col.ref) {
-            value = sim[col.collectionName].filter(item => item._id === col._id)[0].TITLE;
+            let val = sim[col.collectionName].filter(item => item._id === col._id)[0];
+            value = val.TITLE;
         }
+        else {
+            value = col;
 
-        if(curSchema.type === 'Phone') {
-            let callTo = 'tel:' + col;
-            value = <a href={callTo}>{col}</a>
-        }
+            let getIndex = 0;
+            let curSchema = 0;
 
-        if(curSchema.type === 'Email') {
-            let mailTo = 'mailto:' + col;
-            value = <a href={mailTo}>{col}</a>
-        }
+            for(let i in schema) {
+                if(getIndex === index) {
+                    curSchema = schema[i]
+                }
+                getIndex++;
+            }
 
-        if(curSchema.type === 'Date') {
-            let date = new Date(col);
-            value = new Intl.DateTimeFormat('ru').format(date);
+            if(curSchema.type === 'Phone') {
+                let callTo = 'tel:' + col;
+                value = <a href={callTo}>{col}</a>
+            }
+
+            if(curSchema.type === 'Email') {
+                let mailTo = 'mailto:' + col;
+                value = <a href={mailTo}>{col}</a>
+            }
+
+            if(curSchema.type === 'Date') {
+                let date = new Date(col);
+                value = Intl.DateTimeFormat('ru').format(date);
+            }
         }
 
         return (
@@ -163,29 +187,51 @@ export default function Table({nameTable, onChange, query = ''}) {
         )
     }
 
+    async function edit(event) {
+        const url = config.fullApi + nameTable + '/?id=' + event.target.value;
+        const response = await fetch(url);
+        const answer = await response.json();
+        onChange(answer);
+    }
+
+    async function drop(event) {
+        const url = config.fullApi + nameTable + '/' + event.target.value + '/';
+        const confirmWindow = window.confirm('Уверены?');
+        if(confirmWindow) {
+            const response = await fetch(url);
+            const answer = response.status;
+
+            if(answer === 200) {
+                fetchTable();
+            }
+        }
+    }
+
     return (
-        <>
-        <table className='simple-table'>
+        <table cellPadding={0} cellSpacing={0} className="simple-table">
             <thead>
+                {loading &&  <tr><td>Loading...</td></tr>}
                 {!loading && getHeader(table.header)}
             </thead>
-
             <tbody>
+                {loading && <tr><td>Loading...</td></tr>}
+
                 {
-                    !loading && table.body.map((row) => (
-                        <tr key={row._id}>
-                            {Object.values(row).map((col, index )=> (
-                                getContent(col, index, table.sim, table.header)
-                            ))}
+                    !loading && table.body.map(row => (
+                        <tr key={row._id} id={row._id}>
+                            { 
+                                Object.values(row).map((col, index) => (
+                                    getContent(col, index, table.sim, table.header)
+                                ))
+                            }
                             <td>
-                                <button className='edit' onClick={edit} value={row._id}></button>
-                                <button className='drop' onClick={dropElement} value={row._id}></button>
+                                <button value={row._id} onClick={edit} className='edit'></button>
+                                <button value={row._id} onClick={drop} className='drop'></button>
                             </td>
                         </tr>
                     ))
                 }
             </tbody>
         </table>
-        </>
     )
 }

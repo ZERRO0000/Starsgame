@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react';
-import lang from './lang.js';
-import Logo from '../../images/starsgames.png';
+import { useEffect, useState} from 'react';
+import Logo from '../../images/logo.png';
+import Menu from '../menu/Menu';
 import './style.css';
-import Menu from '../menu/Menu.jsx';
 
 export default function Header({ curPath }) {
     /**
-     * Правила работы с хуками
+     * Правила работы со стейтами
      * 1. Нельзя писать вне компонента
-     * 2. useState и useEffect всегда должны быть на самом верхнем уровне 
-     * (нельзя вкладывать в условия)
-     * и в самом начале компонента
+     * 2. useState и useEffect всегда должны быть вверху и без условий
      */
-    const [now, setNow] = useState(new Date());
+    const [now, setNow] = useState(new Date()); //нулевой (now) - элемент состояния; первый (setNow) - функция для изменения элемента состояния
+    // const [menu, setMenu] = useState(props.menu);
+
+    // const getMenu = useCallback(() => {
+    //     setMenu(props.menu);
+    // }, []);
 
     useEffect(
         () => {
@@ -25,26 +27,17 @@ export default function Header({ curPath }) {
     )
 
     return (
-        <>
         <header>
             <div className='LogoGroup'>
-            <img src={Logo} width="30px" alt='' />
-            <h1>SPA</h1>
+                <img src={Logo} width="30px" alt="" />
+                <h1>SPA</h1>
             </div>
             
-            <Menu curPath={curPath} />
+            <Menu curPath={curPath}/>
 
-            <div className='timer'>
-                Время: { now.toLocaleTimeString() }
-                </div> 
-                
+            <div className="timer">
+                Текущее время: { now.toLocaleTimeString() } 
+            </div>
         </header>
-
-        <h1>
-            {curPath != "" && lang[curPath]}
-            {curPath === "" && lang.index}
-        </h1>
-        </>
-        
     )
 }

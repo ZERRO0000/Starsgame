@@ -3,17 +3,8 @@ const brands = {
     TITLE: {
         type: 'String',
         require: true,
-        default: 'None',
+        default: 'none',
         loc: "Название",
-        sort: true,
-        editable: true,
-        searchable: true,
-    },
-    PARENT_COMPANY: {
-        type: 'String',
-        require: false,
-        default: 'None',
-        loc: "Владеющая компания",
         sort: true,
         editable: true,
         searchable: true,
@@ -21,8 +12,17 @@ const brands = {
     COUNTRY: {
         type: 'String',
         require: false,
-        default: 'None',
+        default: 'none',
         loc: "Страна",
+        sort: true,
+        editable: true,
+        searchable: true,
+    },
+    PARENT_COMPANY: {
+        type: 'String',
+        require: false,
+        default: 'none',
+        loc: "Владеющая компания",
         sort: true,
         editable: true,
         searchable: true,
@@ -34,9 +34,9 @@ const brands = {
         loc: "Годовой бюджет ($)",
         sort: true,
         editable: true,
+        step: 10000,
         filter: true,
-        step: 100000
-    }
-}
+    },
+};
 
 export default brands;

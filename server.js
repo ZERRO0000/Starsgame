@@ -1,47 +1,48 @@
-import express, { urlencoded } from 'express';
+import express from 'express';
 import morgan from 'morgan';
 import Fetch from './back/modules/Fetch/index.js';
 import schema from './back/modules/Fetch/schema/index.js';
 import { ObjectId } from 'mongodb';
 import config from './back/params/config.js';
 
-//const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 
 const app = express();
-
 const PORT = 8000;
+// const client = new MongoClient('mongodb://localhost:27017');
 
-//app.use(morgan(':method :url :status :res[content-lenght] - :response-time ms'));
+// client.connect().then(mongoClient => {
+//     console.log('DB Connect');
+//     console.log(mongoClient.options.dbName);
+//     const db = mongoClient.db('group8');
+//     const collection = db.collection('brands');
+//     console.log(collection);
+// });
+
+// let count = db.getCountElements('brands');
+// console.log(count);
+
+// const createPath = (page, dir = 'views', ext = 'html') => {
+//     return resolve(__dirname, dir, `${page}.${ext}`);
+// };
+
+//app.use(morgan(':method :url :res[content-lenght] - :response-time ms'));
 
 app.use((req, res, next) => {
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.setHeader('Access-Control-Allow-Origin', '*'); //Указываем какому приложению мы разрешаем доступ к серверным запросам
-    // SELECT * FROM table.name WHERE ID=1
-    // robots.txt
-    // Disallow: *
-    res.setHeader('Access-Control-Allow-Method', 'GET, POST, DELETE'); // 'GET, POST'
-    res.setHeader('Access-Control-Allow-Header', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true); //Разрешить все что указано выше и считать валидным
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Method', 'GET, POST, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
-//Это если у нас клиент-сервер
-//app.set('views', 'views');
-//app.use(express.static('public'));
-app.use(express.urlencoded({ extended : true}));
+app.use(express.urlencoded({extended: true}));
 
-//GET request
-//Constant requests
-app.get('/api/get/collections/', async (rew, res) => {
-    let mdb = new Fetch.MongoDB();
-    await mdb.getCollectionsStats().then(result=>{
-        res.end(JSON.stringify(result));
-    });
-});
+//GET requests
+app.get('/api/:CollectionName/', async (req, res) => {
 
-
-//Variable requests
-app.get('/api/:CollectionName/', async (req, res) => { // http://localhost:8000/api/getListMenu/?id=lskdlskdf&dfsdfsdf=kdkd
+    console.log('true', req.params.CollectionName);
     let mdb = new Fetch.MongoDB(req.params.CollectionName.toLowerCase());
     let options = {};
 
@@ -52,7 +53,7 @@ app.get('/api/:CollectionName/', async (req, res) => { // http://localhost:8000/
             options.filter._id = new ObjectId(req.query.id);
         }
 
-        if(req.query.q != '') {
+        if(req.query.q) {
             options.search = req.query.q;
         }
 
@@ -69,91 +70,113 @@ app.get('/api/:CollectionName/', async (req, res) => { // http://localhost:8000/
         }
 
         if(req.query.filter === 'Y') {
-            for (let i in req.query) {
-                options.filter[i] = req.query[i]
+            for(let i in req.query) {
+                options.filter[i] = req.query[i];
             }
         }
     }
 
+    let result = await mdb.getValue(options);
 
-    let result = await mdb.get(options);
     res.end(JSON.stringify(result));
 });
 
-app.get('/api/:CollectionName/:id/', async (req, res) => {
-    const collectionName = req.params.CollectionName.toLowerCase();
-    const mdb = new Fetch.MongoDB(collectionName);
-    mdb.remove(req.params.id);
-    res.end('deleted');
+app.get('/api/collections/get/', async (req, res) => {
+    let mdb = new Fetch.MongoDB();
+    await mdb.getCollectionsStats().then(result => {
+        res.end(JSON.stringify(result));
+    });
 });
+
+//DELETE methods
+app.get('/api/:CollectionName/:id/', async (req, res) => {
+    let mdb = new Fetch.MongoDB(req.params.CollectionName.toLowerCase());
+    mdb.removeValue(req.params.id);
+    res.end('deleted');
+}); //app.delete
 
 app.get('/api/schema/get/:Schema/', async (req, res) => {
     let obSchema = await schema[req.params.Schema.toLowerCase()];
     res.end(JSON.stringify(obSchema));
 });
 
+//POST methods
 app.post('/api/:CollectionName/', async (req, res) => {
     const collectionName = req.params.CollectionName.toLowerCase();
     const mdb = new Fetch.MongoDB(collectionName);
-    const result = await mdb.set(req.body);
+    const result = await mdb.setValue(req.body);
 
     if(result.acknowledged) {
-        let newUrl = config.client + collectionName + "?id=" + String(result.insertedId);
+        let newUrl = config.fullClient + collectionName + "?id=" + String(result.insertedId);
         res.redirect(newUrl);
     }
 });
 
 
-
-// app.get('/index.html', (req, res) => {
-//     res.statusCode = 301;
-//     res.redirect('/');
-// });
-
-// app.get('/:section/', async (req,res) => {
-//     const title = req.params.section;
-//     res.sendFile(createPath(req.params.section), {title});
-
-//     let list = await mdb.get(req.params.section);
-//     console.log(list);
-
-// });
-
-// app.get('/views/:section.html', (req, res) => {
-//     const title = req.params.section;
-//     res.sendFile(createPath(req.params.section), {title});
-// });
-
-// app.get('/:section/:page/', (req,res) => {
-//     const title = req.params.section;
-//     res.sendFile(createPath(req.params.section), {title});
-// });
-
-// //POST request
-// app.post('/:section/', async (req,res) => { //request, response
-
-//     let schema = require('./server/schema/' + req.params.section);
-//     let data = controllSchema(req.body, schema);
-
-//     let result = await mdb.set(req.params.section, data);    
-
-//     if(result.insertedId instanceof ObjectId) {
-//         res.redirect(req.url + '?success=Y');
-//     }
-//     else {
-//         res.redirect(req.url + '?success=N');
-//     }
-    
-// });
-
-
-//Обработка ошибок, всегда вызываем самым последним
-app.use((req, res) => {
-    res
-        .status(404)
-        //.sendFile(createPath('404'));
+/*
+app.get('/index.html', (req, res) => {
+    res.statusCode = 301;
+    res.redirect('/');
 });
 
-app.listen(PORT, "localhost", function(error) {
-    (error) ? console.log(error) : console.log('Server listen');
+app.get('/:page/', async (req, res) => {
+    const title = req.params.page;
+    let list = await db.getValue(req.params.page, {}, ['_id', 'TITLE']);
+    console.log(list);
+    res.sendFile(createPath(req.params.page), {title});
+});
+
+app.get('/views/:page.html', (req, res) => {
+    const title = req.params.page;
+    res.sendFile(createPath(req.params.page), {title});
+});
+
+app.get('/:page/:name/', (req, res) => {
+    const title = req.params.page;
+    res.sendFile(createPath(req.params.page), {title});
+});
+
+//POST requests
+app.post('/:page/', async (req, res) => {
+    const data = req.body;
+    const model = require('./server/models/'+req.params.page);
+    
+    let pushData = {};
+
+    for(let index in data) {
+        let val = data[index];
+        let schema = model[index];
+
+        if(schema.validate) {
+            switch(schema.type) {
+                case 'string':
+                    if(val instanceof String) {
+                        pushData[index] = val;
+                    }
+                break;
+    
+                case 'number':
+                    if(val instanceof Number) {
+                        pushData[index] = val;
+                    }
+                break;
+            }
+        }
+        else {
+            pushData[index] = val;
+        }
+    }
+    res.sendFile(createPath(req.params.page));  
+});
+*/
+//Обработка ошибки обращения к серверу
+//Всегда должен быть последним
+app.use((req, res) => {
+    res
+    .status(404)
+    .end('Error');
+});
+
+app.listen(PORT, (error) => {
+    (error) ? console.log(error) : console.log('Server start on port ' + PORT);
 });

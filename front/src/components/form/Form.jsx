@@ -1,46 +1,49 @@
-import { useEffect, useState } from "react";
+import {useState, useEffect} from 'react';
+import config from '../../params/config.js';
 import InputMask from 'react-input-mask';
-import DatePicker from 'react-datepicker';
-import config from "../../params/config.js";
+import DatePicker from "react-datepicker";
+
 import './style.css';
 import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale } from  "react-datepicker";
+
+import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale/ru';
-registerLocale('ru-RU', ru)
+registerLocale('ru-RU', ru);
 
 export default function Form({nameForm, arValue}) {
     const [schema, setSchema] = useState(null);
     const [formValue, setFormValue] = useState({});
-    const [url, setUrl] = useState(config.api + nameForm + '/');
-    const [edit, setEdit] = useState(false); 
+    const [url, setUrl] = useState(config.fullApi + nameForm + '/');
+    const [edit, setEdit] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [startDate, setStartDate] = useState(new Date());
 
     useEffect(
         () => {
-            async function fetchSchema() {
-                const response = await fetch(config.api + 'schema/get/' + nameForm + '/');
+            async function fetchData() {
+                const response = await fetch(config.fullApi + 'schema/get/' + nameForm + '/');
                 const answer = await response.json();
-
+                
                 for(let key in answer) {
                     let element = answer[key];
-
+            
                     if(element.type === 'DBRef') {
-                        let mdb = await fetch(config.api + element.collection + '/');
-                        let ar = await mdb.json();
+                        let mdb =  await fetch(config.fullApi + element.collection + '/');
+                        let ar  = await mdb.json();  
                         answer[key].arList = ar.data;
                     }
                 }
                 setSchema(answer);
-            }
-            setUrl(config.api + nameForm + '/');
-            fetchSchema();
-            if(Object.keys(arValue).length > 0) {
+              }
+              setUrl(config.fullApi + nameForm + '/');
+              fetchData();
+              
+              if(Object.keys(arValue).length > 0) {
                 setFormValue(arValue);
                 setEdit(true);
                 setDisabled(false);
-            }
-            
+              }
+              
         }, [nameForm, arValue]
     );
 
@@ -50,11 +53,11 @@ export default function Form({nameForm, arValue}) {
 
         return (
             <>
-                <option key='0' value='0'>Выберите...</option>
+                <option key={0} value={0}>Выбери...</option>
                 {
-                    list.map(item => (
-                        <option selected={value === item._id} key={item._id} value={item._id}>{item.TITLE}</option>
-                    ))
+                list.map(item => (
+                    <option selected={value === item._id} key={item._id} value={item._id}>{item.TITLE}</option>
+                ))
                 }
             </>
         )
@@ -70,19 +73,35 @@ export default function Form({nameForm, arValue}) {
             newRow.value = (ar[i]) ? ar[i] : '';
 
             switch(newRow.type) {
-                case "String":
+                case 'String':
                     newRow.fieldType = 'text';
                     newRow.field = 'field';
                 break;
 
-                case "Number":
+                case 'Number':
                     newRow.fieldType = 'number';
                     newRow.field = 'field';
                 break;
 
-                case "Email":
+                case 'Phone':
+                    newRow.fieldType = 'tel';
+                    newRow.field = 'tel';
+                break;
+
+                case 'Email':
                     newRow.fieldType = 'email';
                     newRow.field = 'field';
+                break;
+
+                case 'Password':
+                    newRow.fieldType = 'password';
+                    newRow.field = 'field';
+                break;
+
+                case 'DBRef':
+                    newRow.fieldType = 'select';
+                    newRow.field = 'select';
+                    newRow.list = renderSelect(newRow);
                 break;
 
                 case 'Date':
@@ -90,21 +109,10 @@ export default function Form({nameForm, arValue}) {
                     newRow.field = 'date';
                 break;
 
-                case "Phone":
-                    newRow.fieldType = 'tel';
-                    newRow.field = 'tel';
-                break;
-
-                case "DBRef":
-                    newRow.fieldType = 'select';
-                    newRow.field = 'select';
-                    newRow.list = renderSelect(newRow);
-                break;
-
-                case "Hidden":
-                default: 
+                case 'Hidden':
+                default:
                     newRow.fieldType = 'hidden';
-                    newRow.field = 'hidden';
+                    newRow.field = 'field';
                 break;
             }
 
@@ -115,110 +123,116 @@ export default function Form({nameForm, arValue}) {
             <>
                 {
                     formElements.map((item, index) => (
-                        <>
-                        { item.field === 'hidden' && <input type='hidden' name={item.code} defaultValue={item.value && item.value} />}  
-
-
-                        <label key={index}> 
+                        <label key={index} htmlFor={item.code}>
                             <span>{item.loc} {item.require && '*'}</span>
-                            {
-                                item.field === 'field' && <input type={item.fieldType} 
+                            { 
+                                item.field === 'field' &&  <input name={item.code} 
                                     required={item.require && true}
-                                    step={(item.fieldType === 'number') ? item.step : null} 
-                                    defaultValue={item.value && item.value}
-                                    readOnly={item.readOnly}
+                                    defaultValue={item.value && item.value }
                                     onChange={item.sim && callMethod}
-                                    name={item.code} />
+                                    readOnly={item.readOnly}
+                                    step={(item.fieldType === 'number') ? item.step : null}
+                                    type={item.fieldType} /> 
                             }
 
-                            {
+                            { 
                                 item.field === 'select' && <select name={item.code}>{item.list}</select>
                             }
 
-                            {
-                                item.field === 'tel' && <InputMask
-                                required={item.require && true}
-                                defaultValue={item.value && item.value}
-                                name={item.code}
-                                    mask="+7(999)-999-99-99" maskChar="_" />
+                            { 
+                                item.field === 'tel' && <InputMask 
+                                    name={item.code}
+                                    required={item.require && true} 
+                                    defaultValue={item.value && item.value }
+                                    mask="+7(999)-999-99-99" 
+                                    maskChar="_" />
                             }
 
                             {
-                                item.field === 'date' && <DatePicker
-                                    selected={startDate}
+                                item.field === 'date' && <DatePicker 
+                                    selected={startDate} 
                                     dateFormat="dd.MM.yyyy"
                                     name={item.code}
+                                    defaultValue={item.value && item.value }
+                                    required={item.require && true} 
                                     locale='ru-RU'
-                                    required={item.require && true}
-                                    defaultValue={item.value && item.value}
-                                    onChange={(date) => setStartDate(date)}
-                                />
+                                    onChange={(date) => setStartDate(date)} />
                             }
                         </label>
-                        </>
                     ))
                 }
             </>
-        )
+        );
     }
 
-    function callMethod(event) {
-        let form = event.target.closest('form'); //Форма
-        let name = event.target.name; //Имя поля провокатора является ключем схемы
-        let curSchemaTotal = schema[name].sim; //Имя поля с итогом
+    function clearForm(e) {
+        e.preventDefault();
 
-        if(curSchemaTotal) {
-            let obTotal = form.querySelector('input[name='+curSchemaTotal+']'); //Поле с итогом
-            let value = 0;
-            let method = schema[curSchemaTotal].method; //Метод поля с итогом
-            let arSims = schema[curSchemaTotal].fields; //Ключи связных полей
-            let arFields = [];
+        // let formElements = e.target.closest('form').querySelectorAll('input, select, textarea'); //querySelector
 
-            arSims.forEach(item => {
-                arFields.push(form.querySelector('input[name='+item+']'));
-            });
-
-            switch(method) {
-                case "MULTIPLY":
-                    value = arFields[0].value * arFields[1].value;
-                break;
-            }
-
-            obTotal.value = value;
-        }
-    }
-
-    function clearForm(event) {
-        event.preventDefault();
+        // formElements.forEach(item => {
+        //     if(item.tagName === 'SELECT') {
+        //         item.value = 0;
+        //     }
+        //     else {
+        //         item.value = '';
+        //     }
+        // });
         setFormValue({});
         renderForm(schema, {});
         setEdit(false);
         setDisabled(true);
     }
 
-    function checkRequired(event) {
-        let formElement = event.target.closest('form').querySelectorAll('input, select, textarea');
+    function checkRequired(e) {
+        let formElements = e.target.closest('form').querySelectorAll('input, select, textarea'); //querySelector
         let error = 0;
-
-        formElement.forEach(item => {
-            if(item.required === true && (item.value === '0' || item.value === '')) {
+        formElements.forEach(item => {
+            if(item.required === true && (item.value == "0" || item.value === '')) {
                 setDisabled(true);
                 error++;
             }
         });
 
-        if(error == 0) 
+        if(error === 0)
             setDisabled(false);
+    }
+
+    function callMethod(event) {
+        console.log(event);
+        let form = event.target.closest('form');
+        let name = event.target.name;
+        let obSchema = schema;
+        let curSchemaSim = obSchema[name].sim;
+
+        if(curSchemaSim) {
+            let total = form.querySelector('input[name='+curSchemaSim+']');
+            let value = 0;
+            let method = obSchema[curSchemaSim].method;
+            let arSimFields = obSchema[curSchemaSim].fields;
+            let arFields = [];
+
+            arSimFields.forEach(item => {
+                arFields.push(form.querySelector('input[name='+item+']'));
+            });
+
+            switch (method) {
+                case 'MULTIPLY':
+                    value = arFields[0].value * arFields[1].value;
+                break;
+            }
+
+            total.value = value;
+        }
     }
 
     return (
         <form className='editForm' method='POST' action={url} onChange={checkRequired}>
-            <input type='hidden' name='collection' value={nameForm}/>
             { renderForm(schema, formValue) }
 
             <button disabled={disabled && disabled}>
-                {!edit && 'Сохранить'}
                 {edit && 'Изменить'}
+                {!edit && 'Сохранить'}
             </button>
             <button onClick={clearForm}>Сбросить</button>
         </form>

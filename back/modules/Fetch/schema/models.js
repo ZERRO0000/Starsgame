@@ -2,8 +2,8 @@ const models = {
     _id: {},
     BRAND: {
         type: 'DBRef',
-        require: false,
-        default: 'None',
+        require: true,
+        default: 'none',
         loc: "Бренд",
         sort: true,
         editable: true,
@@ -12,12 +12,12 @@ const models = {
     TITLE: {
         type: 'String',
         require: true,
-        default: 'None',
+        default: 'none',
         loc: "Название",
         sort: true,
-        editable: true,
+        editable: true
     },
     
-}
+};
 
 export default models;

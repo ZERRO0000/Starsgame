@@ -1,17 +1,17 @@
-const models = {
+const cards = {
     _id: {},
     TITLE: {
         type: 'String',
         require: true,
-        default: 'None',
+        default: 'none',
         loc: "Гос.знак",
         sort: true,
-        editable: true,
+        editable: true
     },
     MODEL: {
         type: 'DBRef',
-        require: true,
-        default: 0,
+        require: false,
+        default: 'none',
         loc: "Модель",
         sort: true,
         editable: true,
@@ -19,14 +19,13 @@ const models = {
     },
     OWNER: {
         type: 'DBRef',
-        require: true,
-        default: 0,
+        require: false,
+        default: 'none',
         loc: "Владелец",
         sort: true,
         editable: true,
         collection: 'owners'
     },
-    
-}
+};
 
-export default models;
+export default cards;

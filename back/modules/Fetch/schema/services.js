@@ -3,24 +3,25 @@ const services = {
     TITLE: {
         type: 'String',
         require: true,
-        default: 'None',
+        default: 'none',
         loc: "Наименование услуги",
         sort: true,
         editable: true,
+        searchable: true
     },
     DATE: {
         type: 'Date',
         require: true,
-        default: 'None',
+        default: 'none',
         loc: "Дата оказания",
         sort: true,
         editable: true,
-        filter:true
+        filter: true
     },
     CARD: {
         type: 'DBRef',
-        require: false,
-        default: 'None',
+        require: true,
+        default: 'none',
         loc: "Автомобиль",
         sort: true,
         editable: true,
@@ -53,13 +54,13 @@ const services = {
         loc: "Сумма",
         sort: true,
         editable: true,
+        step: 10,
         readOnly: true,
         method: 'MULTIPLY',
         fields: [ 'PRICE', 'COUNT' ],
-        mask: '#VAL1# * #VAL2#',
-        step:1,
-        filter: true
+        mask: '#COUNT# * #PRICE#',
+        filter: true,
     },
-}
+};
 
 export default services;

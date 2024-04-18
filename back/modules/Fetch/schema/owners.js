@@ -3,27 +3,27 @@ const owners = {
     TITLE: {
         type: 'String',
         require: true,
-        default: 'None',
+        default: 'none',
         loc: "ФИО",
         sort: true,
-        editable: true,
+        editable: true
     },
     PHONE: {
         type: 'Phone',
-        require: true,
-        default: '+7',
-        loc: 'Телефон',
-        sort: false,
-        editable: true,
+        require: false,
+        default: 'none',
+        loc: "Телефон",
+        sort: true,
+        editable: true
     },
     EMAIL: {
         type: 'Email',
         require: false,
-        default: 'None',
+        default: 'none',
         loc: "E-mail",
         sort: true,
-        editable: true,
+        editable: true
     },
-}
+};
 
 export default owners;
