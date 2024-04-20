@@ -10,13 +10,13 @@ const game = {
         searchable: true,
     },
     DATE: {
-        type: 'String',
-        require: false,
+        type: 'Date',
+        require: true,
         default: 'none',
         loc: "Дата анонса",
         sort: true,
         editable: true,
-        searchable: true,
+        filter: true
     },
     PUBLISHER: {
         type: 'String',
