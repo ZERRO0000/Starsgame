@@ -1,13 +1,13 @@
 const models = {
     _id: {},
-    BRAND: {
+    GAME: {
         type: 'DBRef',
         require: true,
         default: 'none',
-        loc: "Бренд",
+        loc: "Игра",
         sort: true,
         editable: true,
-        collection: 'brands'
+        collection: 'game'
     },
     TITLE: {
         type: 'String',

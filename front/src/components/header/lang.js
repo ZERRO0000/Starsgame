@@ -1,7 +1,7 @@
 const lang = {
     index: 'Главная',
-    brands: 'Бренды',
-    cards: 'Карточки',
+    game: 'Игра',
+    rating: 'Рейтинг',
     models: 'Модели',
     menu: 'Меню',
     owners: 'Владельцы',

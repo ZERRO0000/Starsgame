@@ -25,7 +25,7 @@ const services = {
         loc: "Автомобиль",
         sort: true,
         editable: true,
-        collection: 'cards'
+        collection: 'rating'
     },
     PRICE: {
         type: 'Number',

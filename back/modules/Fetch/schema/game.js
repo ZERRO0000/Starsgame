@@ -1,4 +1,4 @@
-const brands = {
+const game = {
     _id: {},
     TITLE: {
         type: 'String',
@@ -9,34 +9,33 @@ const brands = {
         editable: true,
         searchable: true,
     },
-    COUNTRY: {
+    DATE: {
         type: 'String',
         require: false,
         default: 'none',
-        loc: "Страна",
+        loc: "Дата анонса",
         sort: true,
         editable: true,
         searchable: true,
     },
-    PARENT_COMPANY: {
+    PUBLISHER: {
         type: 'String',
         require: false,
         default: 'none',
-        loc: "Владеющая компания",
+        loc: "Издатель",
         sort: true,
         editable: true,
         searchable: true,
     },
-    BUDGET: {
-        type: 'Number',
-        require: true,
-        default: 0,
-        loc: "Годовой бюджет ($)",
+    GENRE: {
+        type: 'String',
+        require: false,
+        default: 'none',
+        loc: "Жанр",
         sort: true,
         editable: true,
-        step: 10000,
-        filter: true,
+        searchable: true,
     },
 };
 
-export default brands;
+export default game;

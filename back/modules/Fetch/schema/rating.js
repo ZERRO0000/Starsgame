@@ -1,31 +1,31 @@
-const cards = {
+const rating = {
     _id: {},
-    TITLE: {
+    PLOT: {
         type: 'String',
         require: true,
         default: 'none',
-        loc: "Гос.знак",
+        loc: "Сюжет",
         sort: true,
         editable: true
     },
-    MODEL: {
+    graphic: {
         type: 'DBRef',
         require: false,
         default: 'none',
-        loc: "Модель",
+        loc: "Графика",
         sort: true,
         editable: true,
-        collection: 'models'
+        collection: 'graphics'
     },
-    OWNER: {
+    DETAILING: {
         type: 'DBRef',
         require: false,
         default: 'none',
-        loc: "Владелец",
+        loc: "Детализация",
         sort: true,
         editable: true,
-        collection: 'owners'
+        collection: 'detailings'
     },
 };
 
-export default cards;
+export default rating;
