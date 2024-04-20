@@ -64,7 +64,7 @@
 
 .simple-table button.edit {
     border: 1px solid #333;
-    background:#fff url(./images/edit.png) no-repeat center;
+    background:#fff url(./images/pencil.png) no-repeat center;
     width: 28px;
     height: 28px;
     margin:3px;
