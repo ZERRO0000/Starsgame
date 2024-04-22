@@ -9,8 +9,8 @@ const rating = {
         editable: true
     },
     graphic: {
-        type: 'DBRef',
-        require: false,
+        type: 'String',
+        require: true,
         default: 'none',
         loc: "Графика",
         sort: true,
@@ -18,8 +18,8 @@ const rating = {
         collection: 'graphics'
     },
     DETAILING: {
-        type: 'DBRef',
-        require: false,
+        type: 'String',
+        require: true,
         default: 'none',
         loc: "Детализация",
         sort: true,

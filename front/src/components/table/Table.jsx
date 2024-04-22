@@ -207,6 +207,10 @@ export default function Table({nameTable, onChange, query = ''}) {
         }
     }
 
+    async function star(event) {
+        
+    }
+
     return (
         <table cellPadding={0} cellSpacing={0} className="simple-table">
             <thead>
@@ -227,6 +231,7 @@ export default function Table({nameTable, onChange, query = ''}) {
                             <td>
                                 <button value={row._id} onClick={edit} className='edit'></button>
                                 <button value={row._id} onClick={drop} className='drop'></button>
+                                <button value={row._id} onClick={star} className='star'></button>
                             </td>
                         </tr>
                     ))
