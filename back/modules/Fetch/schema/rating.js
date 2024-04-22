@@ -6,16 +6,18 @@ const rating = {
         default: 'none',
         loc: "Сюжет",
         sort: true,
-        editable: true
+        editable: true,
+        fortawesome: true
     },
-    graphic: {
+    GRAPHIC: {
         type: 'String',
         require: true,
         default: 'none',
         loc: "Графика",
         sort: true,
         editable: true,
-        collection: 'graphics'
+        collection: 'graphics',
+        fortawesome: true
     },
     DETAILING: {
         type: 'String',
@@ -24,7 +26,8 @@ const rating = {
         loc: "Детализация",
         sort: true,
         editable: true,
-        collection: 'detailings'
+        collection: 'detailings',
+        fortawesome: true
     },
 };
 

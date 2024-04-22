@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import s from './index.module.css';
+import s from './star_rating.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,7 +30,7 @@ export default function StarRating({
                             onMouseOut={()=>setHoverItem()}
                             onClick={()=>setCurrentItem(index)}
                         >
-                            <FontAwesomeIcon icon={icon} style={{ width: 100, height: 100 }} />
+                            <FontAwesomeIcon icon={icon} style={{ width: 15, height: 15 }} />
                         </div>
                     )
                 })

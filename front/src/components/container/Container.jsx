@@ -4,12 +4,17 @@ import Table from "../table/Table.jsx";
 import Index from '../index/Index.jsx';
 import HeaderTag from "../headertag/HeaderTag.jsx"; 
 import Search from "../search/Search.jsx";
+import StarRating from '../StarRating/star_rating.jsx';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Container({ curPath }) 
 {
     const [row, setRow] = useState('');
     const [collectionName, setCollectionName] = useState(null);
     const [query, setQuery] = useState('');
+
+    const [currentItem, setCurrentItem] = useState();
 
     const handleUpdateRow = (value) => {
         if(value.data)
@@ -39,10 +44,12 @@ export default function Container({ curPath })
                 {collectionName && <HeaderTag name={collectionName}/>}
             </h1>
             { collectionName && <Search onChange={handleSearch} nameCollection={collectionName}/>}
-            { collectionName && <Form arValue={row} nameForm={collectionName}/> }
+            { collectionName && <Form arValue={row} nameForm={collectionName}/>}
             { collectionName && <Table onChange={handleUpdateRow} nameTable={collectionName} query={query}/>}
             
+
             { !collectionName && <Index></Index>}
+            { collectionName && <StarRating currentItem={currentItem} setCurrentItem={setCurrentItem}/>}
         </div>
     )
 }

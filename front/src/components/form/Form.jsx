@@ -167,17 +167,6 @@ export default function Form({nameForm, arValue}) {
 
     function clearForm(e) {
         e.preventDefault();
-
-        // let formElements = e.target.closest('form').querySelectorAll('input, select, textarea'); //querySelector
-
-        // formElements.forEach(item => {
-        //     if(item.tagName === 'SELECT') {
-        //         item.value = 0;
-        //     }
-        //     else {
-        //         item.value = '';
-        //     }
-        // });
         setFormValue({});
         renderForm(schema, {});
         setEdit(false);
@@ -226,15 +215,28 @@ export default function Form({nameForm, arValue}) {
         }
     }
 
-    return (
-        <form className='editForm' method='POST' action={url} onChange={checkRequired}>
-            { renderForm(schema, formValue) }
-
-            <button disabled={disabled && disabled}>
-                {edit && 'Изменить'}
-                {!edit && 'Сохранить'}
-            </button>
-            <button onClick={clearForm}>Сбросить</button>
-        </form>
-    )
+    if(url == 'http://localhost:3000/rating') {
+        return (
+            <form className='editForm' method='POST' action={url} onChange={checkRequired}>
+                { renderForm(schema, formValue) }
+                <button disabled={disabled && disabled}>
+                    {edit && 'Изменить'}
+                    {!edit && 'Сохранить'}
+                </button>
+                <button onClick={clearForm}>Сбросить</button>
+            </form>
+        )
+    } 
+    else {
+        return (
+            <form className='editForm' method='POST' action={url} onChange={checkRequired}>
+                { renderForm(schema, formValue) }
+                <button disabled={disabled && disabled}>
+                    {edit && 'Изменить'}
+                    {!edit && 'Сохранить'}
+                </button>
+                <button onClick={clearForm}>Сбросить</button>
+            </form>
+        )
+    }
 }
