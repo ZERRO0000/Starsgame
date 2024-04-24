@@ -5,14 +5,13 @@ import Index from '../index/Index.jsx';
 import HeaderTag from "../headertag/HeaderTag.jsx"; 
 import Search from "../search/Search.jsx";
 import StarRating from '../StarRating/star_rating.jsx';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Container({ curPath }) {
     const [row, setRow] = useState('');
     const [collectionName, setCollectionName] = useState(null);
     const [query, setQuery] = useState('');
-
     const [currentItem, setCurrentItem] = useState();
 
     const handleUpdateRow = (value) => {
@@ -46,11 +45,13 @@ export default function Container({ curPath }) {
             { collectionName && <Form arValue={row} nameForm={collectionName}/> }
             
             { collectionName && <Table onChange={handleUpdateRow} nameTable={collectionName} query={query}/>}
-            { collectionName && <StarRating currentItem={currentItem} setCurrentItem={setCurrentItem}/> }
+            <StarRating 
+                currentItem={currentItem}
+                setCurrentItem={setCurrentItem}
+            />
 
             { !collectionName && <Index></Index>}
 
         </div>
     )
 }
-

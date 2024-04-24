@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale/ru';
+import StarRating from '../StarRating/star_rating.jsx';
 registerLocale('ru-RU', ru);
 
 export default function Form({nameForm, arValue}) {
@@ -104,6 +105,11 @@ export default function Form({nameForm, arValue}) {
                     newRow.list = renderSelect(newRow);
                 break;
 
+                case 'rating':
+                    newRow.fieldType = 'StarsRating';
+                    newRow.field = 'rating';
+                break;
+
                 case 'Date':
                     newRow.fieldType = 'date';
                     newRow.field = 'date';
@@ -137,6 +143,10 @@ export default function Form({nameForm, arValue}) {
 
                             { 
                                 item.field === 'select' && <select name={item.code}>{item.list}</select>
+                            }
+
+                            {
+                                item.field === 'rating' && StarRating()
                             }
 
                             { 

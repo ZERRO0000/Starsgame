@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 export default function StarRating({ 
-    count=5,
-    icon=faStar,
-    activeStyle={ color: 'gold' },
+    count = 5,
+    icon = faStar,
+    activeStyle = { color: 'gold' },
     currentItem,
     setCurrentItem
 }) {
@@ -17,7 +17,7 @@ export default function StarRating({
     const [hoverItem, setHoverItem] = useState();
 
     return (
-        <div className={s.stars}>
+        <div className={'stars ' + s.stars}>
             {
                 stars.map((_, index) => {
                     const currentStyle = index <= currentItem ? activeStyle : {}
