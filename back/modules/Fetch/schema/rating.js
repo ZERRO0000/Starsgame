@@ -8,9 +8,15 @@ const rating = {
         sort: true,
         editable: true,
     },
+<<<<<<< Updated upstream
     GRAPHIC: {
         type: 'String',
         require: true,
+=======
+    graphic: {
+        type: 'String',
+        require: false,
+>>>>>>> Stashed changes
         default: 'none',
         loc: "Графика",
         sort: true,
@@ -19,7 +25,11 @@ const rating = {
     },
     DETAILING: {
         type: 'String',
+<<<<<<< Updated upstream
         require: true,
+=======
+        require: false,
+>>>>>>> Stashed changes
         default: 'none',
         loc: "Детализация",
         sort: true,
