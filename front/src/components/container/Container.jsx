@@ -8,8 +8,7 @@ import StarRating from '../StarRating/star_rating.jsx';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function Container({ curPath }) 
-{
+export default function Container({ curPath }) {
     const [row, setRow] = useState('');
     const [collectionName, setCollectionName] = useState(null);
     const [query, setQuery] = useState('');
@@ -44,12 +43,13 @@ export default function Container({ curPath })
                 {collectionName && <HeaderTag name={collectionName}/>}
             </h1>
             { collectionName && <Search onChange={handleSearch} nameCollection={collectionName}/>}
-            { collectionName && <Form arValue={row} nameForm={collectionName}/>}
-            { collectionName && <Table onChange={handleUpdateRow} nameTable={collectionName} query={query}/>}
+            { collectionName && <Form arValue={row} nameForm={collectionName}/> }
             
+            { collectionName && <Table onChange={handleUpdateRow} nameTable={collectionName} query={query}/>}
+            { collectionName && <StarRating currentItem={currentItem} setCurrentItem={setCurrentItem}/> }
 
             { !collectionName && <Index></Index>}
-            { collectionName && <StarRating currentItem={currentItem} setCurrentItem={setCurrentItem}/>}
+
         </div>
     )
 }

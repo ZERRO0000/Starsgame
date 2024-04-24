@@ -7,7 +7,6 @@ const rating = {
         loc: "Сюжет",
         sort: true,
         editable: true,
-        fortawesome: true
     },
     GRAPHIC: {
         type: 'String',
@@ -17,7 +16,6 @@ const rating = {
         sort: true,
         editable: true,
         collection: 'graphics',
-        fortawesome: true
     },
     DETAILING: {
         type: 'String',
@@ -27,7 +25,6 @@ const rating = {
         sort: true,
         editable: true,
         collection: 'detailings',
-        fortawesome: true
     },
 };
 

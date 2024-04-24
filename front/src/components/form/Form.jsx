@@ -214,29 +214,15 @@ export default function Form({nameForm, arValue}) {
             total.value = value;
         }
     }
-
-    if(url == 'http://localhost:3000/rating') {
-        return (
-            <form className='editForm' method='POST' action={url} onChange={checkRequired}>
-                { renderForm(schema, formValue) }
-                <button disabled={disabled && disabled}>
-                    {edit && 'Изменить'}
-                    {!edit && 'Сохранить'}
-                </button>
-                <button onClick={clearForm}>Сбросить</button>
-            </form>
-        )
-    } 
-    else {
-        return (
-            <form className='editForm' method='POST' action={url} onChange={checkRequired}>
-                { renderForm(schema, formValue) }
-                <button disabled={disabled && disabled}>
-                    {edit && 'Изменить'}
-                    {!edit && 'Сохранить'}
-                </button>
-                <button onClick={clearForm}>Сбросить</button>
-            </form>
-        )
-    }
+    
+    return (
+        <form className='editForm' method='POST' action={url} onChange={checkRequired}>
+            { renderForm(schema, formValue) }
+            <button disabled={disabled && disabled}>
+                {edit && 'Изменить'}
+                {!edit && 'Сохранить'}
+            </button>
+            <button onClick={clearForm}>Сбросить</button>
+        </form>
+    )
 }
