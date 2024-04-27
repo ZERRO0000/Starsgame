@@ -1,16 +1,18 @@
 menu {
     display:flex;
-    gap:15px;
+    gap: 15px;
     text-transform: uppercase;
-    margin:0;
-    padding:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:12px;
+    margin: 10px auto;
+    padding: 0;
 }
 
 menu li {
     list-style: none;
     margin:0;
     padding: 5px 10px;
-    background:#1E88E5;
+    border-radius:4px;
     color:#fff;
     cursor: pointer;
     font-size:12px;
@@ -18,13 +20,16 @@ menu li {
 
 menu li a {
     color:#fff;
-    text-decoration:none;
 }
 
 menu li.selected {
-    background: #000;
+    background: #c5c5c5;
+}
+
+menu li.selected a {
+    color:#fff;
 }
 
 menu li:hover {
-    background:#1976D2;
+    background-color:#c5c5c5;
 }

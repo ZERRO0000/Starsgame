@@ -48,7 +48,7 @@ form.editForm select option {
 }
 
 form.editForm button {
-    background: #1976D2;
+    background: #1a1a1a;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
@@ -58,7 +58,7 @@ form.editForm button {
 }
 
 form.editForm button:hover {
-    background: #1E88E5;
+    background: #1a1a1a;
 }
 
 form.editForm button:disabled {

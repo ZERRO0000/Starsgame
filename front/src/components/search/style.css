@@ -9,7 +9,7 @@
 }
 
 .searchPanel label input {
-    border:1px solid #eee;
+    border:1px solid #070707;
     padding:10px 15px 10px 40px;
     line-height: 36px;
     width: calc(-60px + 100% );
@@ -65,7 +65,7 @@
 .modal .modal-head {
     text-align: center;
     padding:13px 0;
-    background-color: #eee;
+    background-color: #c5c5c5;
     position:relative;
 }
 
@@ -116,8 +116,8 @@
 }
 
 .modal button {
-    background: #1976D2;
-    color: #fff;
+    background: #ffffff;
+    color: #070707;
     text-transform: uppercase;
     font-weight: bold;
     border:none;
@@ -126,7 +126,7 @@
 }
 
 .modal button:hover {
-    background: #1E88E5;
+    background: #ffffff;
 }
 
 .modal button:disabled {

@@ -10,7 +10,7 @@ const rating = {
     },
     GRAPHIC: {
         type: 'StarRating',
-        require: true,
+        require: true, 
         default: 'none',
         loc: "Графика",
         sort: true,

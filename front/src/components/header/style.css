@@ -1,7 +1,7 @@
 header {
     display:flex;
-    background:#eee;
-    border-bottom:1px solid #aaa;
+    background:#1a1a1a;
+    border-bottom:10px solid #ffffff;
     justify-content: space-between;
     padding:10px 30px;
 }
@@ -11,10 +11,6 @@ header .LogoGroup {
     flex-wrap:wrap;
     width:200px;
     gap:15px;
-}
-
-header .LogoGroup h1{
-    display:block;
 }
 
 header .LogoGroup h1 {

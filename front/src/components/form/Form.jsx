@@ -105,8 +105,8 @@ export default function Form({nameForm, arValue}) {
                     newRow.list = renderSelect(newRow);
                 break;
 
-                case 'rating':
-                    newRow.fieldType = 'StarsRating';
+                case 'Rating':
+                    newRow.fieldType = 'rating';
                     newRow.field = 'rating';
                 break;
 
