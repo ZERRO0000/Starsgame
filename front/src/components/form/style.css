@@ -20,6 +20,7 @@ form.editForm label {
 
 form.editForm label span {
     font-size:80%;
+    font-weight:500;
 }
 
 form.editForm input,

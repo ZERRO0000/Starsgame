@@ -11,6 +11,9 @@ import { ru } from 'date-fns/locale/ru';
 import StarRating from '../StarRating/star_rating.jsx';
 registerLocale('ru-RU', ru);
 
+// let result = new URL(location.href).searchParams.get("seWork");
+// console.log(result);
+
 export default function Form({nameForm, arValue}) {
     const [schema, setSchema] = useState(null);
     const [formValue, setFormValue] = useState({});

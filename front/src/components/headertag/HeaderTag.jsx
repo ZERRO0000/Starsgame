@@ -1,7 +1,8 @@
 export default function HeaderTag({ name }) 
 {
     let headers = {
-        game: 'Игра',
+        game: 'Выбрать Игру',
+        menu: 'Меню',
         owners: 'Владельцы',
         services: 'Услуги',
         rating: 'Рейтинг',
