@@ -9,7 +9,7 @@ const rating = {
         editable: true,
     },
     GRAPHIC: {
-        type: 'StarRating',
+        type: 'String',
         require: true, 
         default: 'none',
         loc: "Графика",

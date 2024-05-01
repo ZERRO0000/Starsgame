@@ -30,7 +30,7 @@ export default function StarRating({
                             onMouseOut={()=>setHoverItem()}
                             onClick={()=>setCurrentItem(index)}
                         >
-                            <FontAwesomeIcon icon={icon} style={{ width: 15, height: 15 }} />
+                            <FontAwesomeIcon icon={icon} style={{ width: 20, height: 20 }} />
                         </div>
                     )
                 })

@@ -236,7 +236,7 @@ export default function Table({nameTable, onChange, query = ''}) {
                                 <button value={row._id} onClick={edit} className='edit'></button>
                                 <button value={row._id} onClick={drop} className='drop'></button>
                                 <button value={row._id} onClick={star} className='star'>
-                                    <a href="C:\Users\Zerro0000\Desktop\StarsGames\pomodoro timer2\index.html?seWork=1&miWork=2"></a>
+                                    <p><a href='http://localhost:3000/rating'></a>fff</p>
                                 </button>
                             </td>
                         </tr>
