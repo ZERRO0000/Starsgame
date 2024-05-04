@@ -6,9 +6,12 @@ import DatePicker from "react-datepicker";
 import './style.css';
 import "react-datepicker/dist/react-datepicker.css";
 
+import { Rating, RoundedStar } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
+
+
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale/ru';
-import StarRating from '../StarRating/star_rating.jsx';
 registerLocale('ru-RU', ru);
 
 // let result = new URL(location.href).searchParams.get("seWork");
@@ -21,6 +24,13 @@ export default function Form({nameForm, arValue}) {
     const [edit, setEdit] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [startDate, setStartDate] = useState(new Date());
+    const [rating, setRating] = useState(0);
+
+    const myStyles = {
+        itemShapes: RoundedStar,
+        activeFillColor: '#ffb700',
+        inactiveFillColor: '#fbf1a9'
+    };
 
     useEffect(
         () => {
@@ -118,6 +128,16 @@ export default function Form({nameForm, arValue}) {
                     newRow.field = 'date';
                 break;
 
+                case "File":
+                    newRow.fieldType = "file";
+                    newRow.field = "file";
+                    break;
+
+                    case "Rating":
+                        newRow.fieldType = 'rating';
+                        newRow.field = "rating";
+                    break;
+
                 case 'Hidden':
                 default:
                     newRow.fieldType = 'hidden';
@@ -144,12 +164,19 @@ export default function Form({nameForm, arValue}) {
                                     type={item.fieldType} /> 
                             }
 
-                            { 
-                                item.field === 'select' && <select name={item.code}>{item.list}</select>
+                            {item.field === 'rating' && 
+                                <>
+                                <Rating style={{ maxWidth: 300 }} value={rating} onChange={setRating} itemStyles={myStyles} />
+                                <input type='hidden' name={item.code} defaultValue={rating}/>
+                                </>
                             }
 
-                            {
-                                item.field === 'rating' && StarRating()
+                            {item.field === "file" && (
+                                <input type="file" name={item.code} />
+                            )}
+
+                            { 
+                                item.field === 'select' && <select name={item.code}>{item.list}</select>
                             }
 
                             { 

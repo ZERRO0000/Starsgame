@@ -4,8 +4,6 @@ import Table from "../table/Table.jsx";
 import Index from '../index/Index.jsx';
 import HeaderTag from "../headertag/HeaderTag.jsx"; 
 import Search from "../search/Search.jsx";
-import StarRating from '../StarRating/star_rating.jsx';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Container({ curPath }) {
@@ -45,10 +43,6 @@ export default function Container({ curPath }) {
             { collectionName && <Form arValue={row} nameForm={collectionName}/> }
             
             { collectionName && <Table onChange={handleUpdateRow} nameTable={collectionName} query={query}/>}
-            <StarRating 
-                currentItem={currentItem}
-                setCurrentItem={setCurrentItem}
-            />
 
             { !collectionName && <Index></Index>}
 

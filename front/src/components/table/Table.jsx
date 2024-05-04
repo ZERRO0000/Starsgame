@@ -4,7 +4,6 @@ import './style.css';
 import './images/star.png';
 import './images/delete.png';
 import './images/pencil.png';
-import StarRating from '../StarRating/star_rating.jsx';
 
 export default function Table({nameTable, onChange, query = ''}) {
     const [table, setTable] = useState({
