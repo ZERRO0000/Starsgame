@@ -1,30 +1,32 @@
 const rating = {
     _id: {},
     PLOT: {
-        type: 'String',
+        type: 'Rating',
         require: true,
-        default: 'none',
-        loc: "Сюжет",
+        default: 0,
+        loc: 'Сюжет',
         sort: true,
         editable: true,
+        searchable: false
     },
     GRAPHIC: {
-        type: 'String',
-        require: true, 
-        default: 'none',
-        loc: "Графика",
+        type: 'Rating',
+        require: true,
+        default: 0,
+        loc: 'Графика',
         sort: true,
         editable: true,
-        collection: 'graphics'
+        searchable: false
     },
     DETAILING: {
-        type: 'String',
+        type: 'Rating',
         require: true,
-        loc: "Детализация",
+        default: 0,
+        loc: 'Графика',
         sort: true,
         editable: true,
-        collection: 'detailings',
-    },
+        searchable: false
+    }
 };
 
 export default rating;
