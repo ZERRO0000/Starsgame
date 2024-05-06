@@ -14,8 +14,7 @@ import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale/ru';
 registerLocale('ru-RU', ru);
 
-// let result = new URL(location.href).searchParams.get("seWork");
-// console.log(result);
+
 
 export default function Form({nameForm, arValue}) {
     const [schema, setSchema] = useState(null);
@@ -118,25 +117,25 @@ export default function Form({nameForm, arValue}) {
                     newRow.list = renderSelect(newRow);
                 break;
 
-                case 'Rating':
-                    newRow.fieldType = 'rating';
-                    newRow.field = 'rating';
-                break;
-
                 case 'Date':
                     newRow.fieldType = 'date';
                     newRow.field = 'date';
                 break;
 
+                case 'Game':
+                    newRow.fieldType = 'game';
+                    newRow.field = 'game';
+                break;
+
                 case "File":
                     newRow.fieldType = "file";
                     newRow.field = "file";
-                    break;
+                break;
 
-                    case "Rating":
-                        newRow.fieldType = 'rating';
-                        newRow.field = "rating";
-                    break;
+                case "Rating":
+                    newRow.fieldType = 'rating';
+                    newRow.field = "rating";
+                break;
 
                 case 'Hidden':
                 default:
@@ -174,6 +173,10 @@ export default function Form({nameForm, arValue}) {
                             {item.field === "file" && (
                                 <input type="file" name={item.code} />
                             )}
+
+                            {/* {item.field === "game" && 
+                                
+                            } */}
 
                             { 
                                 item.field === 'select' && <select name={item.code}>{item.list}</select>

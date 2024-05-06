@@ -210,7 +210,7 @@ export default function Table({nameTable, onChange, query = ''}) {
         }
     }
 
-    async function star(event) {
+    async function star() {
         
     }
 
@@ -235,7 +235,7 @@ export default function Table({nameTable, onChange, query = ''}) {
                                 <button value={row._id} onClick={edit} className='edit'></button>
                                 <button value={row._id} onClick={drop} className='drop'></button>
                                 <button value={row._id} onClick={star} className='star'>
-                                    <p><a href='http://localhost:8000/api/rating'></a>fff</p>
+                                    <a onClick="javascript:location.href='http://localhost:8000/api/rating';"></a>
                                 </button>
                             </td>
                         </tr>
