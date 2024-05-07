@@ -212,10 +212,6 @@ export default function Table({nameTable, onChange, query = ''}) {
 
     async function star(event) {
         window.location.href = 'http://localhost:3000/rating';
-        const url = 'http://localhost:3000/rating';
-        const response = await fetch(url);
-        const answer = await response.json();
-        onChange(answer);
     }
 
     return (
