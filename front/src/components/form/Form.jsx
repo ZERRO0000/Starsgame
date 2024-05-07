@@ -9,7 +9,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Rating, RoundedStar } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 
-
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale/ru';
 registerLocale('ru-RU', ru);
@@ -23,7 +22,10 @@ export default function Form({nameForm, arValue}) {
     const [edit, setEdit] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [startDate, setStartDate] = useState(new Date());
-    const [rating, setRating] = useState(0);
+    const [rating1, setRating1] = useState(0);
+    const [rating2, setRating2] = useState(0);
+    const [rating3, setRating3] = useState(0);
+    const [game, setGame] = useState(0);
 
     const myStyles = {
         itemShapes: RoundedStar,
@@ -165,8 +167,8 @@ export default function Form({nameForm, arValue}) {
 
                             {item.field === 'rating' && 
                                 <>
-                                <Rating style={{ maxWidth: 150 }} value={rating} onChange={setRating} itemStyles={myStyles} />
-                                <input type='hidden' name={item.code} defaultValue={rating}/>
+                                    <Rating style={{ maxWidth: 150 }} value={rating1} onChange={setRating1} itemStyles={myStyles} />
+                                    <input type='hidden' name={item.code} defaultValue={rating1} />
                                 </>
                             }
 
@@ -174,9 +176,10 @@ export default function Form({nameForm, arValue}) {
                                 <input type="file" name={item.code} />
                             )}
 
-                            {/* {item.field === "game" && 
-                                
-                            } */}
+                            {item.field === "game" && 
+                                <game>
+                                </game>
+                            }
 
                             { 
                                 item.field === 'select' && <select name={item.code}>{item.list}</select>

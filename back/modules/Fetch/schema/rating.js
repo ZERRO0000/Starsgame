@@ -1,5 +1,14 @@
 const rating = {
     _id: {},
+    GAME: {
+        type: 'String',
+        require: true,
+        default: 'none',
+        loc: "Игра",
+        sort: true,
+        editable: true,
+        searchable: true,
+    },
     PLOT: {
         type: 'Rating',
         require: true,

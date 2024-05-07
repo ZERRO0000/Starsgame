@@ -210,8 +210,12 @@ export default function Table({nameTable, onChange, query = ''}) {
         }
     }
 
-    async function star() {
-        
+    async function star(event) {
+        window.location.href = 'http://localhost:3000/rating';
+        const url = 'http://localhost:3000/rating';
+        const response = await fetch(url);
+        const answer = await response.json();
+        onChange(answer);
     }
 
     return (
@@ -234,9 +238,7 @@ export default function Table({nameTable, onChange, query = ''}) {
                             <td>
                                 <button value={row._id} onClick={edit} className='edit'></button>
                                 <button value={row._id} onClick={drop} className='drop'></button>
-                                <button value={row._id} onClick={star} className='star'>
-                                    <a onClick="javascript:location.href='http://localhost:8000/api/rating';"></a>
-                                </button>
+                                <button value={row._id} onClick={star} className='star'></button>
                             </td>
                         </tr>
                     ))
