@@ -4,10 +4,19 @@ const rating = {
         type: 'String',
         require: true,
         default: 'none',
-        loc: "Игра",
+        loc: "Рецензент",
         sort: true,
         editable: true,
         searchable: true,
+    },
+    GAME: {
+        type: 'DBRef',
+        require: true,
+        default: 'none',
+        loc: "Игра",
+        sort: true,
+        editable: true,
+        collection: 'game'
     },
     PLOT: {
         type: 'Rating',
