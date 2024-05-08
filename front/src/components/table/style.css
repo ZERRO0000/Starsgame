@@ -91,10 +91,15 @@
 }
 
 .simple-table button.star {
-    border: 1px solid #333;
-    background:#fff url() no-repeat center;
+    border:1px solid #333;
+    border-radius:4px;
+    background-color: #fff;
+    background-image:url('./images/star.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 28px;
     height: 28px;
     margin:3px;
-    cursor:pointer;
+    cursor: pointer;
 }

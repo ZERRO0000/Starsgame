@@ -126,11 +126,6 @@ export default function Form({nameForm, arValue}) {
                     newRow.field = 'date';
                 break;
 
-                case 'Game':
-                    newRow.fieldType = 'game';
-                    newRow.field = 'game';
-                break;
-
                 case "File":
                     newRow.fieldType = "file";
                     newRow.field = "file";
@@ -184,10 +179,6 @@ export default function Form({nameForm, arValue}) {
                             {item.field === "file" && (
                                 <input type="file" name={item.code} />
                             )}
-
-                            {item.field === "game" && 
-                                <a href={'http://localhost:3000/rating'} className='goto'>{'->'}</a>
-                            }
 
                             { 
                                 item.field === 'select' && <select name={item.code}>{item.list}</select>
