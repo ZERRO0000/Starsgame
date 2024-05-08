@@ -234,7 +234,7 @@ export default function Table({nameTable, onChange, query = ''}) {
                             <td>
                                 <button value={row._id} onClick={edit} className='edit'></button>
                                 <button value={row._id} onClick={drop} className='drop'></button>
-                                <button value={row._id} onClick={star} className='star'></button>
+                                {nameTable === 'game' && <button value={row._id} onClick={star} className='star'></button>}
                             </td>
                         </tr>
                     ))
