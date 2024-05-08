@@ -209,7 +209,9 @@ export default function Table({nameTable, onChange, query = ''}) {
         }
     }
 
-    async function star(event) {
+    function star(event) {
+        let val = event.target.value;
+        window.location = '/rating?id=' + val;
     }
 
     return (

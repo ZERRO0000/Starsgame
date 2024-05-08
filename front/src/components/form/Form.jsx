@@ -62,7 +62,11 @@ export default function Form({nameForm, arValue}) {
 
     function renderSelect(ar) {
         let list = ar.arList;
-        let value = ar.value._id;
+        let value = Object.keys(ar.value).length > 0 ? ar.value._id : ar.value;
+
+        if(ar.code === 'GAME') {
+            value = new URLSearchParams(window.location.search).get("id") || 0;
+        }
 
         return (
             <>
@@ -113,7 +117,7 @@ export default function Form({nameForm, arValue}) {
 
                 case 'DBRef':
                     newRow.fieldType = 'select';
-                    newRow.field = 'select';
+                    newRow.field = 'select';                        
                     newRow.list = renderSelect(newRow);
                 break;
 
