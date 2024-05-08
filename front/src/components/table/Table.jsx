@@ -3,6 +3,7 @@ import config from '../../params/config.js';
 import './style.css';
 import './images/delete.png';
 import './images/pencil.png';
+import './images/star.png';
 
 export default function Table({nameTable, onChange, query = ''}) {
     const [table, setTable] = useState({
