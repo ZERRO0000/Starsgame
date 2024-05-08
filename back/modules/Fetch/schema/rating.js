@@ -1,6 +1,6 @@
 const rating = {
     _id: {},
-    GAME: {
+    TITLE: {
         type: 'String',
         require: true,
         default: 'none',

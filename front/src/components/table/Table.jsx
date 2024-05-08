@@ -1,7 +1,6 @@
 import {useState, useCallback, useEffect} from 'react';
 import config from '../../params/config.js';
 import './style.css';
-import './images/star.png';
 import './images/delete.png';
 import './images/pencil.png';
 
@@ -211,7 +210,6 @@ export default function Table({nameTable, onChange, query = ''}) {
     }
 
     async function star(event) {
-        window.location.href = 'http://localhost:3000/rating';
     }
 
     return (
@@ -224,7 +222,7 @@ export default function Table({nameTable, onChange, query = ''}) {
                 {loading && <tr><td>Loading...</td></tr>}
 
                 {
-                    !loading && table.body.map(row => (
+                    (!loading & table.body.length>0) && table.body.map(row => (
                         <tr key={row._id} id={row._id}>
                             { 
                                 Object.values(row).map((col, index) => (

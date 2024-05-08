@@ -182,8 +182,7 @@ export default function Form({nameForm, arValue}) {
                             )}
 
                             {item.field === "game" && 
-                                <game>
-                                </game>
+                                <a href={'http://localhost:3000/rating'} className='goto'>{'->'}</a>
                             }
 
                             { 
