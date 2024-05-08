@@ -31,7 +31,7 @@ const rating = {
         type: 'Rating',
         require: true,
         default: 0,
-        loc: 'Графика',
+        loc: 'Детализация',
         sort: true,
         editable: true,
         searchable: false

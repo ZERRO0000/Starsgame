@@ -22,9 +22,7 @@ export default function Form({nameForm, arValue}) {
     const [edit, setEdit] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [startDate, setStartDate] = useState(new Date());
-    const [rating1, setRating1] = useState(0);
-    const [rating2, setRating2] = useState(0);
-    const [rating3, setRating3] = useState(0);
+    const [rating, setRating] = useState({});
     const [game, setGame] = useState(0);
 
     const myStyles = {
@@ -59,7 +57,7 @@ export default function Form({nameForm, arValue}) {
                 setDisabled(false);
               }
               
-        }, [nameForm, arValue]
+        }, [nameForm, arValue, rating]
     );
 
     function renderSelect(ar) {
@@ -167,8 +165,15 @@ export default function Form({nameForm, arValue}) {
 
                             {item.field === 'rating' && 
                                 <>
-                                    <Rating style={{ maxWidth: 150 }} value={rating1} onChange={setRating1} itemStyles={myStyles} />
-                                    <input type='hidden' name={item.code} defaultValue={rating1} />
+                                    <Rating style={{ maxWidth: 150 }} value={rating[item.code]} 
+                                    onChange={(selectedValue) => {
+                                        let ob = {};
+                                        ob[item.code] = selectedValue;
+                                        setRating((prevData) => ({ ...prevData, ...ob }))
+                                        }
+                                    }
+                                    itemStyles={myStyles} />
+                                    <input type='hidden' name={item.code} defaultValue={rating[item.code]} />
                                 </>
                             }
 
@@ -247,7 +252,7 @@ export default function Form({nameForm, arValue}) {
             let arSimFields = obSchema[curSchemaSim].fields;
             let arFields = [];
 
-            arSimFields.forEach(item => {
+            arSimFields.forEach((item) => {
                 arFields.push(form.querySelector('input[name='+item+']'));
             });
 
