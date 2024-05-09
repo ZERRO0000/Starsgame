@@ -10,7 +10,6 @@ export default function Container({ curPath }) {
     const [row, setRow] = useState('');
     const [collectionName, setCollectionName] = useState(null);
     const [query, setQuery] = useState('');
-    const [currentItem, setCurrentItem] = useState();
 
     const handleUpdateRow = (value) => {
         if(value.data)

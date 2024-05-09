@@ -176,6 +176,9 @@ export default function Form({nameForm, arValue}) {
                                 </>
                             }
 
+                            {
+                                
+                            }
                             {item.field === "file" && (
                                 <input type="file" name={item.code} />
                             )}
@@ -203,6 +206,7 @@ export default function Form({nameForm, arValue}) {
                                     locale='ru-RU'
                                     onChange={(date) => setStartDate(date)} />
                             }
+
                         </label>
                     ))
                 }
