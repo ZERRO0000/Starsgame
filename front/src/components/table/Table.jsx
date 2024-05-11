@@ -176,6 +176,10 @@ export default function Table({nameTable, onChange, query = ''}) {
                 getIndex++;
             }
 
+            if(curSchema.code === '_id') {
+                value = '...' + col.slice(18,25);
+            }
+
             if(curSchema.type === 'Phone') {
                 let callTo = 'tel:' + col;
                 value = <a href={callTo}>{col}</a>
@@ -192,7 +196,7 @@ export default function Table({nameTable, onChange, query = ''}) {
             }
 
             if(curSchema.type === 'Rating') {
-                value = <Rating style={{ maxWidth: 150 }} value={col} readOnly itemStyles={myStyles} />
+                value = <Rating style={{ maxWidth: 100 }} value={col} readOnly itemStyles={myStyles} />
             }
         }
 
@@ -211,7 +215,7 @@ export default function Table({nameTable, onChange, query = ''}) {
     }
 
     async function drop(event) {
-        const url = config.fullApi + nameTable + '/' + event.target.value + '/';
+        const url= config.fullApi + nameTable + '/' + event.target.value + '/';
         const confirmWindow = window.confirm('Уверены?');
         if(confirmWindow) {
             const response = await fetch(url);
