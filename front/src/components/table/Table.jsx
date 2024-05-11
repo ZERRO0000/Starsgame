@@ -1,5 +1,8 @@
 import {useState, useCallback, useEffect} from 'react';
 import config from '../../params/config.js';
+
+import { Rating, RoundedStar } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
 import './style.css';
 import './images/delete.png';
 import './images/pencil.png';
@@ -14,6 +17,12 @@ export default function Table({nameTable, onChange, query = ''}) {
     });
 
     const [loading, setLoading] = useState(false);
+
+    const myStyles = {
+        itemShapes: RoundedStar,
+        activeFillColor: '#ffb700',
+        inactiveFillColor: '#fbf1a9'
+    };
 
     const fetchTable = useCallback(async () => {
         setLoading(true);
@@ -180,6 +189,10 @@ export default function Table({nameTable, onChange, query = ''}) {
             if(curSchema.type === 'Date') {
                 let date = new Date(col);
                 value = Intl.DateTimeFormat('ru').format(date);
+            }
+
+            if(curSchema.type === 'Rating') {
+                value = <Rating style={{ maxWidth: 150 }} value={col} readOnly itemStyles={myStyles} />
             }
         }
 
