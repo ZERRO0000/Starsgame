@@ -105,7 +105,7 @@ export default function Index() {
         <div>
             <h3>Документы</h3>
         <CChart
-            type="polarArea"
+            type="doughnut"
             data={{
                 labels: pie.labels,
                 datasets: [
@@ -123,13 +123,6 @@ export default function Index() {
                     }
                 }
                 },
-                scales: {
-                r: {
-                    grid: {
-                    //color: getStyle('--cui-border-color'),
-                    },
-                }
-                }
             }}
             />
             </div>

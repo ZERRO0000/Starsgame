@@ -1,5 +1,6 @@
 import Header from './components/header/Header.jsx';
 import './App.css';
+import Changetype from './components/changetype/Changetype.jsx';
 import Container from './components/container/Container.jsx';
 import Route from './modules/Route.js';
 import { useState, useEffect, useCallback} from 'react';
@@ -18,12 +19,16 @@ function App() {
   	)
 
   	return (
+		<>
     	<div className="App">
 		<Header curPath={currentPath}/>
+
+		<Changetype> </Changetype>
 
 		<Container curPath={currentPath}></Container>
 		
 		</div>
+		</>
 	);
 }
 
