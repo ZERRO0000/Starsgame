@@ -1,6 +1,7 @@
 import { useEffect, useState} from 'react';
 import Logo from '../../images/starsgames.png';
 import Menu from '../menu/Menu';
+import darkmode from '../changetype/Changetype';
 import './style.css';
 
 export default function Header({ curPath }) {
@@ -26,10 +27,11 @@ export default function Header({ curPath }) {
         }, []
     )
 
-    return (
+    return (            
         <header>
             <div className='LogoGroup'>
                 <img src={Logo} width="30px" alt="" />
+                <button >Переключить режим</button>
             </div>
             
             <Menu curPath={curPath}/>

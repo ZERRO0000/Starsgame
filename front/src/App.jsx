@@ -22,9 +22,7 @@ function App() {
 		<>
     	<div className="App">
 		<Header curPath={currentPath}/>
-
-		<Changetype> </Changetype>
-
+		
 		<Container curPath={currentPath}></Container>
 		
 		</div>
