@@ -16,6 +16,10 @@ form.editForm {
     width:30%;
 }
 
+.App.dark form.editForm {
+    background:#222;
+}
+
 form.editForm label {
     width:95%;
     text-align:left;

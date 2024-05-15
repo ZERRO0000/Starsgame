@@ -4,7 +4,7 @@ import Menu from '../menu/Menu';
 import darkmode from '../changetype/Changetype';
 import './style.css';
 
-export default function Header({ curPath, changeDark }) {
+export default function Header({ curPath, changeDark, editMode }) {
     /**
      * Правила работы со стейтами
      * 1. Нельзя писать вне компонента
@@ -32,6 +32,7 @@ export default function Header({ curPath, changeDark }) {
             <div className='LogoGroup'>
                 <img src={Logo} width="30px" alt="" />
                 <button onClick={changeDark} >Переключить режим</button>
+                <button onClick={editMode} >Редактирование</button>
             </div>
             
             <Menu curPath={curPath}/>

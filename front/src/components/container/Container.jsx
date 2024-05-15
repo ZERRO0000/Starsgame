@@ -7,12 +7,10 @@ import Search from "../search/Search.jsx";
 import NewsList from "../news/NewsList.jsx";
 
 
-export default function Container({ curPath }) {
+export default function Container({ curPath, edit }) {
     const [row, setRow] = useState('');
     const [collectionName, setCollectionName] = useState(null);
     const [query, setQuery] = useState('');
-    const params = (new URL(document.location)).searchParams;
-    const edit = params.get('edit');
 
     const handleUpdateRow = (value) => {
         if(value.data)
@@ -47,7 +45,7 @@ export default function Container({ curPath }) {
             { !collectionName && <Index></Index>}
 
             {
-                edit === 'y' && 
+                edit === true && 
                     <>
                     { collectionName && <Search onChange={handleSearch} nameCollection={collectionName}/>}
                     {collectionName && <Form arValue={row} nameForm={ collectionName }></Form>}

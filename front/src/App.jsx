@@ -8,7 +8,9 @@ function App() {
   
  	let [currentPath, setCurrentPath] = useState('index');
 	let curDarkStorage = localStorage.getItem('dark') === 'true';
+	let curEditStorage = localStorage.getItem('edit') === 'true';
 	const [dark, setDark] = useState(false);
+	const [edit, setEdit] = useState(false);
 
   	const setPath = useCallback(async () => {
     	let r = new Route();
@@ -29,12 +31,18 @@ function App() {
 		setDark(value);
 	}
 
+	function toggleEdit() {
+		let value = edit === true ? false : true;
+		localStorage.setItem('edit', value);
+		setEdit(value);
+	}
+
   	return (
 		<>
     	<div className={dark === true ? 'App dark' : 'App'}>
-		<Header curPath={currentPath} changeDark={toggleDark}/>
+		<Header curPath={currentPath} changeDark={toggleDark} editMode={toggleEdit}/>
 		
-		<Container curPath={currentPath}></Container>
+		<Container curPath={currentPath} edit={edit}></Container>
 		
 		</div>
 		</>
