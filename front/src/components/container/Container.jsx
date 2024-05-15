@@ -5,6 +5,7 @@ import Index from '../index/Index.jsx';
 import HeaderTag from "../headertag/HeaderTag.jsx"; 
 import Search from "../search/Search.jsx";
 import NewsList from "../news/NewsList.jsx";
+import RatingNewsList from "../rating-news/RatingNewsList.jsx";
 
 
 export default function Container({ curPath, edit }) {
@@ -39,8 +40,9 @@ export default function Container({ curPath, edit }) {
                 {collectionName && <HeaderTag name={collectionName}/>}
             </h1>
 
-            {collectionName && <NewsList collectionName={collectionName}></NewsList>}
+            { curPath === 'game' && <NewsList collectionName={collectionName}></NewsList>}
             
+            { curPath === 'rating' && <RatingNewsList collectionName={collectionName}></RatingNewsList>}
 
             { !collectionName && <Index></Index>}
 

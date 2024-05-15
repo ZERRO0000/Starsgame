@@ -1,0 +1,17 @@
+.rating-news-list {
+    display:flex;
+    width:100%;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.rating-news-list .rating-news-card {
+    width:calc(33% - 30px);
+    border:1px solid #eee;
+    padding:10px;
+}
+
+.rating-news-list .rating-news-card span {
+    font-size:14px;
+    margin-top:5px;
+}
