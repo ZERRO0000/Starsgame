@@ -4,7 +4,7 @@ import Menu from '../menu/Menu';
 import darkmode from '../changetype/Changetype';
 import './style.css';
 
-export default function Header({ curPath }) {
+export default function Header({ curPath, changeDark }) {
     /**
      * Правила работы со стейтами
      * 1. Нельзя писать вне компонента
@@ -31,7 +31,7 @@ export default function Header({ curPath }) {
         <header>
             <div className='LogoGroup'>
                 <img src={Logo} width="30px" alt="" />
-                <button >Переключить режим</button>
+                <button onClick={changeDark} >Переключить режим</button>
             </div>
             
             <Menu curPath={curPath}/>

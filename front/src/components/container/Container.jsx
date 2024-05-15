@@ -32,10 +32,9 @@ export default function Container({ curPath }) {
         }, [setCollection]
     )
 
-    return (
-        <div className='container'>
+    return ( 
+        <div className={ 'container'}>
             <h1>
-                {!collectionName && 'Главная'}
                 {collectionName && <HeaderTag name={collectionName}/>}
             </h1>
             { collectionName && <Search onChange={handleSearch} nameCollection={collectionName}/>}
