@@ -44,6 +44,14 @@ form.editForm select {
     display:block;
 }
 
+.App.dark form.editForm select {
+    background:#333;
+}
+
+.App.dark form.editForm input {
+    background: #333;
+}
+
 form.editForm input:focus,
 form.editForm select:focus {
     outline:none;
@@ -56,17 +64,22 @@ form.editForm select option {
 }
 
 form.editForm button {
-    background: #1a1a1a;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    border:none;
-    padding:12px 15px;
-    cursor: pointer;
+    border-radius: 10px;
+    transition: .2s linear;
+    padding: 12px 15px;
+}
+
+.App.dark form.editForm button {
+    color: white;
+    background: #333;
 }
 
 form.editForm button:hover {
-    background: #1a1a1a;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
+}
+
+.App.dark form.editForm button:hover {
+    box-shadow: 0 0 0 2px #222, 0 0 0 4px #333;
 }
 
 form.editForm button:disabled {

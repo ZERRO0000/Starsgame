@@ -1,15 +1,6 @@
 const rating = {
     _id: {},
     TITLE: {
-        type: 'String',
-        require: true,
-        default: 'none',
-        loc: "Рецензент",
-        sort: true,
-        editable: true,
-        searchable: true,
-    },
-    GAME: {
         type: 'DBRef',
         require: true,
         default: 'none',
@@ -41,6 +32,15 @@ const rating = {
         require: true,
         default: 0,
         loc: 'Детализация',
+        sort: true,
+        editable: true,
+        searchable: false
+    },
+    LINK: {
+        type: 'String',
+        require: true,
+        default: 'none',
+        loc: 'Ссылка на YouTube',
         sort: true,
         editable: true,
         searchable: false

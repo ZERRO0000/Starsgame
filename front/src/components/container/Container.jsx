@@ -4,8 +4,8 @@ import Table from "../table/Table.jsx";
 import Index from '../index/Index.jsx';
 import HeaderTag from "../headertag/HeaderTag.jsx"; 
 import Search from "../search/Search.jsx";
-import NewsList from "../news/NewsList.jsx";
-import RatingNewsList from "../rating-news/RatingNewsList.jsx";
+import NewsList from "../lists/NewsList.jsx";
+import RatingList from "../ratingList/RatingList.jsx";
 
 
 export default function Container({ curPath, edit }) {
@@ -42,7 +42,7 @@ export default function Container({ curPath, edit }) {
 
             { curPath === 'game' && <NewsList collectionName={collectionName}></NewsList>}
             
-            { curPath === 'rating' && <RatingNewsList collectionName={collectionName}></RatingNewsList>}
+            { curPath === 'rating' && <RatingList collectionName={collectionName}></RatingList>}
 
             { !collectionName && <Index></Index>}
 

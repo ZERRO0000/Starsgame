@@ -18,7 +18,7 @@ export default function NewsList({collectionName, limit, paginator = false}) {
 
     return (
         <>
-        <div className='news-list'>   
+        <div className='news-list'>
             {
                 news && news.map(el => (
                     <div className='news-card'>

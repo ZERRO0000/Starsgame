@@ -1,14 +1,14 @@
 import { useEffect, useState, useCallback } from 'react';
-import './ratingnewslist.css';
+import './ratinglist.css';
 import config from '../../params/config';
 
-export default function RatingNewsList({collectionName, limit, paginator = false}) {
-    const [ratingnews, setRatingNews] = useState([]);
+export default function RatingList({collectionName, limit, paginator = false}) {
+    const [ratinglist, setRatingList] = useState([]);
 
     const fetchNews = useCallback(async () => {
         const response = await fetch(config.fullApi + collectionName +'/');
         const answer = await response.json();
-        setRatingNews(answer.data);
+        setRatingList(answer.data);
     }, []);
 
     useEffect(
@@ -17,10 +17,10 @@ export default function RatingNewsList({collectionName, limit, paginator = false
 
     return (
         <>
-        <div className='rating-news-list'>   
+        <div className='news-list'> 
             {
-                ratingnews && ratingnews.map(el => (
-                    <div className='rating-news-card'>
+                ratinglist && ratinglist.map(el => (
+                    <div className='news-card'>
                         <h2>{el.TITLE}</h2>
                         <span>{el.PUBLISHER}</span>
                     </div>

@@ -1,7 +1,6 @@
 header {
     display:flex;
     background:#1a1a1a;
-    border-bottom:10px solid #ffffff;
     justify-content: space-between;
     padding:10px 30px;
 }
@@ -31,4 +30,42 @@ header menu li {
 
 header .timer {
     line-height: 30px;
+}
+
+/* toggle-btn */
+.toggle-btn {
+    border-radius: 10px;
+    transition: .2s linear;
+}
+
+.toggle-btn:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
+}
+
+.App.dark .toggle-btn {
+    color: white;
+    background: #333;
+}
+
+.App.dark .toggle-btn:hover {
+    box-shadow: 0 0 0 2px #222, 0 0 0 4px #333;
+}
+
+/* edit-btn */
+.edit-btn {
+    border-radius: 10px;
+    transition: .2s linear;
+}
+
+.edit-btn:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
+}
+
+.App.dark .edit-btn {
+    color: white;
+    background: #333;
+}
+
+.App.dark .edit-btn:hover {
+    box-shadow: 0 0 0 2px #222, 0 0 0 4px #333;
 }
