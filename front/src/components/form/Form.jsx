@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import config from '../../params/config.js';
 import InputMask from 'react-input-mask';
 import DatePicker from "react-datepicker";
+import Video from '../video/Video.jsx';
 
 import './style.css';
 import "react-datepicker/dist/react-datepicker.css";
@@ -23,7 +24,6 @@ export default function Form({nameForm, arValue}) {
     const [disabled, setDisabled] = useState(true);
     const [startDate, setStartDate] = useState(new Date());
     const [rating, setRating] = useState({});
-    const [game, setGame] = useState(0);
 
     const myStyles = {
         itemShapes: RoundedStar,
@@ -176,9 +176,6 @@ export default function Form({nameForm, arValue}) {
                                 </>
                             }
 
-                            {
-                                
-                            }
                             {item.field === "file" && (
                                 <input type="file" name={item.code} />
                             )}

@@ -8,7 +8,6 @@ export default function NewsList({collectionName, limit, paginator = false}) {
     const fetchNews = useCallback(async () => {
         const response = await fetch(config.fullApi + collectionName +'/');
         const answer = await response.json();
-        console.log(answer)
         setNews(answer.data);
     }, []);
 

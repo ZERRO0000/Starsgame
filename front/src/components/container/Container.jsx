@@ -6,6 +6,7 @@ import HeaderTag from "../headertag/HeaderTag.jsx";
 import Search from "../search/Search.jsx";
 import NewsList from "../lists/NewsList.jsx";
 import RatingList from "../ratingList/RatingList.jsx";
+import Video from "../video/Video.jsx";
 
 
 export default function Container({ curPath, edit }) {
@@ -40,16 +41,20 @@ export default function Container({ curPath, edit }) {
                 {collectionName && <HeaderTag name={collectionName}/>}
             </h1>
 
+            { !collectionName && <Index></Index>}
+            
             { curPath === 'game' && <NewsList collectionName={collectionName}></NewsList>}
             
             { curPath === 'rating' && <RatingList collectionName={collectionName}></RatingList>}
 
-            { !collectionName && <Index></Index>}
+            {collectionName && <Table onChange={handleUpdateRow} nameTable={ collectionName } query={query}></Table>}
+
+            { curPath === 'rating' && <Video></Video> }
 
             {
                 edit === true && 
                     <>
-                    { collectionName && <Search onChange={handleSearch} nameCollection={collectionName}/>}
+                    {collectionName && <Search onChange={handleSearch} nameCollection={collectionName}/>}
                     {collectionName && <Form arValue={row} nameForm={ collectionName }></Form>}
                     {collectionName && <Table onChange={handleUpdateRow} nameTable={ collectionName } query={query}></Table>}
                     </>

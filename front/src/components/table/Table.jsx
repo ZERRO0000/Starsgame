@@ -1,5 +1,5 @@
 import {useState, useCallback, useEffect} from 'react';
-import config from '../../params/config.js';
+import config from '../../params/config.js';    
 
 import { Rating, RoundedStar } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
@@ -15,7 +15,6 @@ export default function Table({nameTable, onChange, query = ''}) {
         footer: [],
         sim: []
     });
-
     const [loading, setLoading] = useState(false);
 
     const myStyles = {
@@ -109,53 +108,8 @@ export default function Table({nameTable, onChange, query = ''}) {
             th.classList.remove('DESC');
             th.classList.add('ASC');
         }
-
-        // allTh.forEach(item => {
-        //     if(item.dataset.code != code) {
-        //         if(item.classList.contains('ASC'))
-        //             th.classList.remove('ASC');
-
-        //         if(item.classList.contains('DESC'))
-        //             th.classList.remove('DESC');
-        //     }
-        // });
     }
-
-    // function getRow(row, schema) {
-    //     let content = [];
-
-    //     for(let fieldName in row) {
-    //         let el = row[fieldName];
-    //         let schemaType = schema[fieldName].type;
-    //         let value, prefix;
-
-    //         switch(schemaType) {
-    //             default: 
-    //                 value = el;
-    //             break;
-
-    //             case 'Phone':
-    //                 prefix = 'tel:' + el;
-    //                 value = <a href={prefix}>{el}</a>;
-    //             break;
-
-    //             case 'Email':
-    //                 prefix = 'mailto:' + el;
-    //                 value = <a href={prefix}>{el}</a>
-    //             break;
-    //         }
-    //     }
-
-    //     console.log(content);
-        
-
-    //     return (
-    //         <>
-    //             {}
-    //         </>
-    //     )
-    // }
-
+    
     function getContent(col, index, sim, schema) {
         let value = '';
 
@@ -232,32 +186,38 @@ export default function Table({nameTable, onChange, query = ''}) {
         window.location = '/rating?id=' + val;
     }
 
-    return (
-        <table cellPadding={0} cellSpacing={0} className="simple-table">
-            <thead>
-                {loading &&  <tr><td>Loading...</td></tr>}
-                {!loading && getHeader(table.header)}
-            </thead>
-            <tbody>
-                {loading && <tr><td>Loading...</td></tr>}
+    function openYT(event) {
+        const url = event.target.innerHTML;
+    }
 
-                {
-                    (!loading & table.body.length>0) && table.body.map(row => (
-                        <tr key={row._id} id={row._id}>
-                            { 
-                                Object.values(row).map((col, index) => (
-                                    getContent(col, index, table.sim, table.header)
-                                ))
-                            }
-                            <td>
-                                <button value={row._id} onClick={edit} className='edit'></button>
-                                <button value={row._id} onClick={drop} className='drop'></button>
-                                {nameTable === 'game' && <button value={row._id} onClick={star} className='star'></button>}
-                            </td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+    return (
+        <>
+            <table cellPadding={0} cellSpacing={0} className="simple-table">
+                <thead>
+                    {loading &&  <tr><td>Loading...</td></tr>}
+                    {!loading && getHeader(table.header)}
+                </thead>
+                <tbody>
+                    {loading && <tr><td>Loading...</td></tr>}
+
+                    {
+                        (!loading & table.body.length>0) && table.body.map(row => (
+                            <tr key={row._id} id={row._id} tabindex="0" onClick={openYT}>
+                                { 
+                                    Object.values(row).map((col, index) => (
+                                        getContent(col, index, table.sim, table.header)
+                                    ))
+                                }
+                                <td>
+                                    <button value={row._id} onClick={edit} className='edit'></button>
+                                    <button value={row._id} onClick={drop} className='drop'></button>
+                                    {nameTable === 'game' && <button value={row._id} onClick={star} className='star'></button>}
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </>
     )
 }
