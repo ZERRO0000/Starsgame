@@ -1,6 +1,15 @@
 const rating = {
     _id: {},
     TITLE: {
+        type: 'String',
+        require: true,
+        default: 'none',
+        loc: 'Автор',
+        sort: true,
+        editable: true,
+        searchable: false
+    },
+    GAME: {
         type: 'DBRef',
         require: true,
         default: 'none',

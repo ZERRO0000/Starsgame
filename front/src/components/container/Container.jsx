@@ -47,10 +47,6 @@ export default function Container({ curPath, edit }) {
             
             { curPath === 'rating' && <RatingList collectionName={collectionName}></RatingList>}
 
-            {collectionName && <Table onChange={handleUpdateRow} nameTable={ collectionName } query={query}></Table>}
-
-            { curPath === 'rating' && <Video></Video> }
-
             {
                 edit === true && 
                     <>

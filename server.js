@@ -49,7 +49,7 @@ app.get('/api/:CollectionName/', async (req, res) => {
     if(req.query) {
         options.filter = {};
 
-        if(req.query.id) {
+        if(req.query.id && !req.query.set) {
             options.filter._id = new ObjectId(req.query.id);
         }
 
@@ -107,7 +107,7 @@ app.post('/api/:CollectionName/', async (req, res) => {
     const result = await mdb.setValue(req.body);
 
     if(result.acknowledged) {
-        let newUrl = config.fullClient + collectionName + "?id=" + String(result.insertedId);
+        let newUrl = config.fullClient + collectionName + "?id=" + String(result.insertedId) + '&set=Y';
         res.redirect(newUrl);
     }
 });

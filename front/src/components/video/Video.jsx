@@ -1,12 +1,14 @@
 import ReactPlayer from 'react-player';
 
-export default function Video() {
+export default function Video({url, width, height}) {
     return (
         <div>
             <ReactPlayer 
-                url={'https://youtu.be/gmA6MrX81z4?si=rbrbjiaf3-kNyGDZ'}
+                url={url}
                 playing={false}
                 controls={true}
+                width={width}
+                height={height}
             />
         </div>
     )
