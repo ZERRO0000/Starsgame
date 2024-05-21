@@ -3,7 +3,7 @@ import './App.css';
 import Container from './components/container/Container.jsx';
 import Route from './modules/Route.js';
 import { useState, useEffect, useCallback } from 'react';
-import RatingNewsList from './components/ratingList/RatingList.jsx';
+import RatingList from './components/ratingList/RatingList.jsx';
 
 function App() {
   
@@ -42,7 +42,7 @@ function App() {
 		<>
     	<div className={dark === true ? 'App dark' : 'App'}>
 		<Header curPath={currentPath} changeDark={toggleDark} editMode={toggleEdit}/>
-		<RatingNewsList></RatingNewsList>
+		<RatingList></RatingList>
 		<Container curPath={currentPath} edit={edit}></Container>
 		
 		</div>
