@@ -1,7 +1,5 @@
 import { DBRef, ObjectId } from "mongodb";
 import schema from "../schema/index.js";
-import MongoDB from "./MongoDB.js";
-import Fetch from "../index.js";
 
 export default class Controll {
 

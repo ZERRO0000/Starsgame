@@ -60,7 +60,6 @@ export default function NewsList({
             footer: [],
             sim: unPreparedData.sim,
         };
-        console.log(url, data);
         callback(data);
         return true;
     }
