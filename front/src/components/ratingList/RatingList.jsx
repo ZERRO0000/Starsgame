@@ -7,7 +7,7 @@ import Video from '../video/Video';
 
 //https://doka.guide/css/grid-guide/ - гайд по гридам
 
-export default function RatingList({collectionName, limit, paginator = false}) {
+export default function RatingList({collectionName = 'rating', limit, paginator = false}) {
     const [ratingList, setRatingList] = useState({
         header: [],
         body: [],
@@ -17,8 +17,11 @@ export default function RatingList({collectionName, limit, paginator = false}) {
 
     const fetchNews = useCallback(async () => {
         //let getReq = window.location.search;
-        let urlRequest = config.fullApi + collectionName +'/';
-        await getFetch(urlRequest);
+        if(collectionName != '' && collectionName != null) {
+            let urlRequest = config.fullApi + collectionName +'/';
+            await getFetch(urlRequest);
+        }
+        
     }, [collectionName]);
 
     const myStyles = {

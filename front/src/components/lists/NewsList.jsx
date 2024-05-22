@@ -1,32 +1,143 @@
-import { useEffect, useState, useCallback } from 'react';
-import './newslist.css';
-import config from '../../params/config';
+import { useEffect, useState, useCallback } from "react";
+import "./newslist.css";
+import { Rating, RoundedStar } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
+import config from "../../params/config";
+import Video from "../video/Video";
 
-export default function NewsList({collectionName, limit, paginator = false}) {
-    const [news, setNews] = useState([]);
+//https://doka.guide/css/grid-guide/ - гайд по гридам
+
+export default function NewsList({
+    collectionName = "game",
+    limit,
+    paginator = false,
+}) {
+    const [newsList, setNewsList] = useState({
+        header: [],
+        body: [],
+        footer: [],
+        sim: [],
+    });
+
+    const [allRatings, setAllRatings] = useState({
+        header: [],
+        body: [],
+        footer: [],
+        sim: [],
+    });
+
+    const [ready, setReady] = useState(false)
 
     const fetchNews = useCallback(async () => {
-        const response = await fetch(config.fullApi + collectionName +'/');
-        const answer = await response.json();
-        setNews(answer.data);
-    }, []);
+        //let getReq = window.location.search;
+        if (collectionName != "" && collectionName != null) {
+            let urlRequest = config.fullApi + collectionName + "/";
+            let answer = await getFetch(urlRequest, setNewsList);
+            let allRatingsReq = config.fullApi + 'rating/';
+            let answer2 = await getFetch(allRatingsReq, setAllRatings);
 
-    useEffect(
-        () => {fetchNews()}, [fetchNews]
-    );
+            if(answer && answer2)
+                setReady(true);
+        }
+    }, [collectionName]);
+
+    const myStyles = {
+        itemShapes: RoundedStar,
+        activeFillColor: "#ffb700",
+        inactiveFillColor: "#fbf1a9",
+    };
+
+    useEffect(() => {
+        fetchNews();
+    }, [fetchNews]);
+
+    async function getFetch(url, callback) {
+        const response = await fetch(url);
+        const unPreparedData = await response.json();
+        const data = {
+            header: unPreparedData.head,
+            body: unPreparedData.data,
+            footer: [],
+            sim: unPreparedData.sim,
+        };
+        console.log(url, data);
+        callback(data);
+        return true;
+    }
+
+    function getAllRatings(id) {
+        //todo: fix this proiblem
+        if(allRatings.data instanceof Array) {
+            let arRatings = allRatings.data.filter(item => item.GAME._id === id);
+            console.log(arRatings)
+        }
+    }
+
+    function getContent(col, index, sim, schema) {
+        let value = "";
+
+        value = col;
+
+        let getIndex = 0;
+        let curSchema = 0;
+        let code = 0;
+
+        for (let i in schema) {
+            if (getIndex === index) {
+                curSchema = schema[i];
+                code = i;
+            }
+            getIndex++;
+        }
+
+        if (code === "_id") {
+            getAllRatings(value);
+            value = false;
+           
+        }
+
+        if (code === "TITLE") {
+            value = (
+                <div className="Author">
+                    : <span>{value}</span>
+                </div>
+            );
+        }
+
+        if (curSchema.type === "Rating") {
+            value = (
+                <div className={"rating " + code.toLowerCase()}>
+                    {curSchema.loc}:
+                    <Rating
+                        style={{ maxWidth: 100 }}
+                        value={col}
+                        readOnly
+                        itemStyles={myStyles}
+                    />
+                </div>
+            );
+        }
+
+        return <>{value !== false && value}</>;
+    }
 
     return (
         <>
-        <div className='news-list'>
-            {
-                news && news.map(el => (
-                    <div className='news-card'>
-                        <h2>{el.TITLE}</h2>
-                        <span>{el.PUBLISHER}</span>
-                    </div>
-                ))
-            }
-        </div>
+            <div className="news-list">
+                {ready &&
+                    newsList.body.map((row, i) => (
+                        <div key={i} className="news-card">
+                            {Object.values(row).map((col, index) =>
+                                getContent(
+                                    col,
+                                    index,
+                                    newsList.sim,
+                                    newsList.header
+                                )
+                            )}
+                        </div>
+                    ))}
+            </div>
         </>
-    )
+    );
 }

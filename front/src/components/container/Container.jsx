@@ -6,7 +6,6 @@ import HeaderTag from "../headertag/HeaderTag.jsx";
 import Search from "../search/Search.jsx";
 import NewsList from "../lists/NewsList.jsx";
 import RatingList from "../ratingList/RatingList.jsx";
-import Video from "../video/Video.jsx";
 
 
 export default function Container({ curPath, edit }) {
@@ -25,7 +24,7 @@ export default function Container({ curPath, edit }) {
     }
 
     const setCollection = useCallback(async () => {
-        if(curPath!=='index')
+        if(curPath!=='index' && curPath != null)
             setCollectionName(curPath);
     })
 
@@ -45,7 +44,7 @@ export default function Container({ curPath, edit }) {
             
             { curPath === 'game' && <NewsList collectionName={collectionName}></NewsList>}
             
-            { curPath === 'rating' && <RatingList collectionName={collectionName}></RatingList>}
+            { collectionName != 'undefined' && curPath === 'rating' && <RatingList collectionName={collectionName}></RatingList>}
 
             {
                 edit === true && 
