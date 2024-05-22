@@ -70,7 +70,7 @@ export default class Controll {
                     let newData = (item[fieldName]) ? item[fieldName] : fieldSchema.default;
                     if(fieldSchema.type === 'DBRef') {
                         let dbref = item[fieldName];
-                        if(dbref.collection) {
+                        if(dbref && dbref.collection) {
                             newRow[fieldName] = {
                                 ref: true,
                                 collectionName: dbref.collection,
