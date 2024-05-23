@@ -7,7 +7,12 @@ import Video from '../video/Video';
 
 //https://doka.guide/css/grid-guide/ - гайд по гридам
 
-export default function RatingList({collectionName = 'rating', limit, paginator = false}) {
+export default function RatingList({
+    collectionName = 'rating',
+    limit,
+    paginator = false
+}) {
+    
     const [ratingList, setRatingList] = useState({
         header: [],
         body: [],
@@ -50,7 +55,7 @@ export default function RatingList({collectionName = 'rating', limit, paginator 
 
     function getContent(col, index, sim, schema) {
         let value = '';
-        
+        console.log(col)
 
         if(col.ref) {
             let val = sim[col.collectionName].filter(item => item._id === col._id)[0];
@@ -76,7 +81,7 @@ export default function RatingList({collectionName = 'rating', limit, paginator 
             }
 
             if(code === 'TITLE') {
-                value = <div className='Author'>Автор: <span>{value}</span></div>
+                value = <div className='title'>Название: <span>{value}</span></div>
             }
 
             if(code === 'LINK') {
@@ -102,19 +107,18 @@ export default function RatingList({collectionName = 'rating', limit, paginator 
 
     return (
         <>
-        <div className='news-list'> 
-            {
-                ratingList && ratingList.body.map(row => (
-                    <div className='news-card'>
-                        {
-                            Object.values(row).map((col, index) => (
-                                getContent(col, index, ratingList.sim, ratingList.header)
-                            ))
-                        }
-                    </div>
-                ))
-            }
-        </div>
+            <div className='news-list'> 
+                {ratingList &&
+                    ratingList.body.map(row => (
+                        <div className='news-card'>
+                            {
+                                Object.values(row).map((col, index) => (
+                                    getContent(col, index, ratingList.sim, ratingList.header)
+                                ))
+                            }
+                        </div>
+                    ))}
+            </div>
         </>
     )
 }

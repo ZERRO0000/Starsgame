@@ -3,7 +3,6 @@ import "./newslist.css";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import config from "../../params/config";
-import Video from "../video/Video";
 
 //https://doka.guide/css/grid-guide/ - гайд по гридам
 
@@ -98,7 +97,7 @@ export default function NewsList({
         if (code === "TITLE") {
             value = (
                 <div className="Author">
-                    : <span>{value}</span>
+                    Игра : <span>{value}</span>
                 </div>
             );
         }
