@@ -75,7 +75,7 @@ export default function NewsList({
         let value = "";
         
         value = col;
-        
+        console.log(col)
         let getIndex = 0;
         let curSchema = 0;
         let code = 0;

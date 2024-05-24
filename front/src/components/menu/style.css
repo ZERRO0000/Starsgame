@@ -9,36 +9,38 @@ menu {
 }
 
 menu li {
-    list-style: none;
-    margin:0;
-    padding: 5px 10px;
-    border-radius:10px;
-    color:#fff;
-    cursor: pointer;
-    font-size:12px;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
 }
 
 menu li a {
-    color:#fff;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
 }
 
-menu li.selected {
-    background: #c5c5c5;
+menu li::after {
+    width: 0;
+    transition: 0.3s;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    content: '';
+    bottom: 0;
+    display: block;
+    height: 1px;
+    background: #ffffff;
+}
+
+menu li:hover::after {
+    width: 100%;
+}
+
+menu li:active{
+    width: 100%;
 }
 
 .App.dark menu li.selected {
     background: #333;
-}
-
-menu li.selected a {
-    color:#fff;
-}
-
-menu li:hover {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
-    transition: .2s linear;
-}
-
-.App.dark menu li:hover {
-    box-shadow: 0 0 0 2px #222, 0 0 0 4px #333;
 }

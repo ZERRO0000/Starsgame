@@ -2,13 +2,15 @@ header {
     display:flex;
     background:#1a1a1a;
     justify-content: space-between;
-    padding:10px 30px;
+    padding:17px 35px;
+    font-weight: 500;
+    font-family: var(--mainFontFamily);
 }
 
 header .LogoGroup {
     display:flex;
     flex-wrap:wrap;
-    gap:15px;
+    gap:20px;
 }
 
 header .LogoGroup h1 {
@@ -32,44 +34,50 @@ header .timer {
     line-height: 30px;
 }
 
-/* toggle-btn */
-.toggle-btn {
-    border-radius: 10px;
-    transition: .2s linear;
-    font-size: 0.9rem;
-    font-family: Source Sans\ 3, sans-serif;
+/* toggle-a */
+.toggle-a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
 }
 
-.toggle-btn:hover {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
+.toggle-a::after {
+    width: 0;
+    transition: 0.3s;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    content: '';
+    bottom: 0;
+    display: block;
+    height: 1px;
+    background: #ffffff;
 }
 
-.App.dark .toggle-btn {
-    color: white;
-    background: #333;
+.toggle-a:hover:after {
+    width: 100%;
 }
 
-.App.dark .toggle-btn:hover {
-    box-shadow: 0 0 0 2px #222, 0 0 0 4px #333;
+/* edit-a */
+.edit-a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
 }
 
-/* edit-btn */
-.edit-btn {
-    border-radius: 10px;
-    transition: .2s linear;
-    font-size: 0.9rem;
-    font-family: Source Sans\ 3, sans-serif;
+.edit-a::after {
+    width: 0;
+    transition: 0.3s;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    content: '';
+    bottom: 0;
+    display: block;
+    height: 1px;
+    background: #ffffff;
 }
 
-.edit-btn:hover {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
-}
-
-.App.dark .edit-btn {
-    color: white;
-    background: #333;
-}
-
-.App.dark .edit-btn:hover {
-    box-shadow: 0 0 0 2px #222, 0 0 0 4px #333;
+.edit-a:hover:after {
+    width: 100%;
 }

@@ -23,10 +23,11 @@
 
 .news-card .Author {
     grid-column: span 3;
-    font-family: sans-serif;
     text-align: justify;
     line-height: 30px;
+    font-weight: 500;
 }
+
 .news-card .game,
 .news-card .video {
     grid-column: span 3;

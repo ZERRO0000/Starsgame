@@ -30,8 +30,11 @@ export default function Header({ curPath, changeDark, editMode }) {
         <header>
             <div className='LogoGroup'>
                 <img src={Logo} width="30px" alt="" />
-                <button className='toggle-btn' onClick={changeDark} >Переключить режим</button>
-                <button className='edit-btn' onClick={editMode} >Редактирование</button>
+
+                <a className='toggle-a' href='#' onClick={changeDark}>Переключить режим</a>
+
+                <a className='edit-a' href='#' onClick={editMode}>Редактирование</a>
+                
             </div>
             
             <Menu curPath={curPath}/>

@@ -5,7 +5,6 @@ const lang = {
     models: 'Модели',
     menu: 'Меню',
     owners: 'Владельцы',
-    services: 'Услуги'
 }
 
 export default lang;
