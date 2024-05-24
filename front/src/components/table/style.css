@@ -5,6 +5,8 @@
     max-width:70%;
     width:100%;
     height: fit-content;
+    font-size: 1rem;
+    font-family: Source Sans\ 3, sans-serif;
 }
 
 .simple-table thead tr th {

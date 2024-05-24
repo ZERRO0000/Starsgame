@@ -185,11 +185,7 @@ export default function Table({nameTable, onChange, query = ''}) {
         let val = event.target.value;
         window.location = '/rating?id=' + val;
     }
-
-    function openYT(event) {
-        const url = event.target.innerHTML;
-    }
-
+    
     return (
         <>
             <table cellPadding={0} cellSpacing={0} className="simple-table">
@@ -202,7 +198,7 @@ export default function Table({nameTable, onChange, query = ''}) {
 
                     {
                         (!loading & table.body.length>0) && table.body.map(row => (
-                            <tr key={row._id} id={row._id} tabindex="0" onClick={openYT}>
+                            <tr key={row._id} id={row._id} tabindex="0">
                                 { 
                                     Object.values(row).map((col, index) => (
                                         getContent(col, index, table.sim, table.header)

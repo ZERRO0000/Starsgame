@@ -36,6 +36,7 @@ menu li.selected a {
 
 menu li:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px #333;
+    transition: .2s linear;
 }
 
 .App.dark menu li:hover {

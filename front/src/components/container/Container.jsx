@@ -49,7 +49,6 @@ export default function Container({ curPath, edit }) {
             {
                 edit === true && 
                     <>
-                    {collectionName && <Search onChange={handleSearch} nameCollection={collectionName}/>}
                     {collectionName && <Form arValue={row} nameForm={ collectionName }></Form>}
                     {collectionName && <Table onChange={handleUpdateRow} nameTable={ collectionName } query={query}></Table>}
                     </>

@@ -73,13 +73,13 @@ export default function NewsList({
 
     function getContent(col, index, sim, schema) {
         let value = "";
-
+        
         value = col;
-
+        
         let getIndex = 0;
         let curSchema = 0;
         let code = 0;
-
+        
         for (let i in schema) {
             if (getIndex === index) {
                 curSchema = schema[i];
@@ -98,6 +98,30 @@ export default function NewsList({
             value = (
                 <div className="Author">
                     Игра : <span>{value}</span>
+                </div>
+            );
+        }
+
+        if (code === "DATE") {
+            value = (
+                <div className="Author">
+                    Дата анонса : <span>{value.substring(0, 9)}</span>
+                </div>
+            );
+        }
+
+        if (code === "PUBLISHER") {
+            value = (
+                <div className="Author">
+                    Издатель : <span>{value}</span>
+                </div>
+            );
+        }
+
+        if (code === "GENRE") {
+            value = (
+                <div className="Author">
+                    Жанр : <span>{value}</span>
                 </div>
             );
         }
