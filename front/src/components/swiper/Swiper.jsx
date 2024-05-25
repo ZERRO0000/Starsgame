@@ -32,10 +32,10 @@ export default () => {
 
             </SwiperSlide>
             <SwiperSlide>
-                <img className='slider-image' src='https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/02/gta5-screenshot-cityscape-landscape.jpg'></img>
+                <img className='slider-image' src='https://wallpapergod.com/images/hd/rdr2-1920X1080-wallpaper-grnnecomf1z9pcx2.jpeg'></img>
             </SwiperSlide>
             <SwiperSlide>
-                <img className='slider-image' src='https://assets1.ignimgs.com/2018/10/25/rdr2-1600-1540463299681.jpg'></img>
+                <img className='slider-image' src='https://i.pinimg.com/originals/e2/6f/ba/e26fba8d9f2102d2dd8699c80b8ddc78.jpg'></img>
             </SwiperSlide>
         </Swiper>
     );

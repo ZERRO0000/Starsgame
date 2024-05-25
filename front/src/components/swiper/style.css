@@ -6,18 +6,12 @@
     margin-top: 20px;
 }
 
-.slider-image {
-    text-align: center;
-}
-
-.name {
-    z-index: 1000;
-}
-
 .swiper-wrapper {
     width: 1500px;
 }
 
-.slider-image img {
-    max-width: 100%;
+.slider-image {
+    object-fit: cover;
+    position: relative;
+    bottom: 250px;
 }

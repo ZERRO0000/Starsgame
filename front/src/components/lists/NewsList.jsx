@@ -68,7 +68,7 @@ export default function NewsList({
         let ratings = {};
 
         if(allRatings.body instanceof Array) {
-            let arRatings = allRatings.body.filter(item => item.GAME._id === id);
+            let arRatings = allRatings.body.filter((item) => item._id === id);
             let count = allRatings.body.length;
             
             ratings.COUNT = count;
