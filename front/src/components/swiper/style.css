@@ -1,4 +1,18 @@
 .swiper {
-    width: 600px;
-    height: 300px;
+    width: 10000px;
+    height: 500px;
+    min-width: 0;
+}
+
+.slider-image {
+    text-align: center;
+}
+
+.swiper-wrapper {
+    width: 1500px;
+}
+
+.slider-image img {
+    max-width: 100%;
+    
 }

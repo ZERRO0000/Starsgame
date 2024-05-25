@@ -44,3 +44,7 @@ menu li:active{
 .App.dark menu li.selected {
     background: #333;
 }
+
+.selected {
+    color: #5eff00;
+}

@@ -6,6 +6,7 @@ import HeaderTag from "../headertag/HeaderTag.jsx";
 import Search from "../search/Search.jsx";
 import NewsList from "../lists/NewsList.jsx";
 import RatingList from "../ratingList/RatingList.jsx";
+import Swiper from "../swiper/Swiper.jsx";
 
 
 export default function Container({ curPath, edit }) {
@@ -35,10 +36,9 @@ export default function Container({ curPath, edit }) {
     )
 
     return ( 
-        <div className={'container'}>
-            <h1>
-                {collectionName && <HeaderTag name={collectionName}/>}
-            </h1>
+        <div className={'container'}>   
+
+            { collectionName === 'game' && <Swiper></Swiper> }
 
             { !collectionName && <Index></Index>}
             
