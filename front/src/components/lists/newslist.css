@@ -12,7 +12,12 @@
     border:1px solid #555;
     padding:20px;
     border-radius: 25px;
+<<<<<<< Updated upstream
     box-shadow: 0 8px 16px #00000033;
+=======
+    transition: .2s linear;
+    box-shadow: 0 8px 16px #00000084;
+>>>>>>> Stashed changes
     margin-top: 20px;
     position: relative;
 }
@@ -35,6 +40,10 @@
     transition: all .5s ease-out;
 }
 
+.App.dark .news-list .news-card {
+    background-color: #222;
+}
+
 .news-list .news-card:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px #c5c5c5;
     background-size: cover;
@@ -43,11 +52,15 @@
 }
 
 
+<<<<<<< Updated upstream
 .news-list .news-card:hover .poster{
     opacity: .8;
     transition: all .5s ease-in;
 }
 
+=======
+ 
+>>>>>>> Stashed changes
 .news-list .news-card img {
     margin-bottom: 5px;
     max-height: 160px;
