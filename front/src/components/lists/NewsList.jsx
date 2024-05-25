@@ -93,10 +93,6 @@ export default function NewsList({
         let value = "";
         
         value = col;
-<<<<<<< Updated upstream
-=======
-        
->>>>>>> Stashed changes
         let getIndex = 0;
         let curSchema = 0;
         let code = 0;
