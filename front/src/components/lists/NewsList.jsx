@@ -65,16 +65,38 @@ export default function NewsList({
 
     function getAllRatings(id) {
         //todo: fix this proiblem
-        if(allRatings.data instanceof Array) {
-            let arRatings = allRatings.data.filter(item => item.GAME._id === id);
-            console.log(arRatings)
+        let ratings = {};
+
+        if(allRatings.body instanceof Array) {
+            let arRatings = allRatings.body.filter(item => item.GAME._id === id);
+            let count = allRatings.body.length;
+            
+            ratings.COUNT = count;
+
+            let DETAILING = 0, GRAPHIC = 0, PLOT = 0;
+            arRatings.map(item => {
+                DETAILING += parseInt(item.DETAILING);
+                GRAPHIC += parseInt(item.GRAPHIC);
+                PLOT += parseInt(item.PLOT);
+            });
+
+            ratings.DETAILING = DETAILING / count;
+            ratings.GRAPHIC = GRAPHIC / count;
+            ratings.PLOT = PLOT / count;
+            ratings.TOTAL = (ratings.PLOT + ratings.GRAPHIC + ratings.DETAILING) / 3
         }
+
+        return ratings;
     }
 
     function getContent(col, index, sim, schema) {
         let value = "";
         
         value = col;
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
         let getIndex = 0;
         let curSchema = 0;
         let code = 0;
@@ -88,9 +110,43 @@ export default function NewsList({
         }
 
         if (code === "_id") {
-            getAllRatings(value);
-            value = false;
-           
+            let ratings = getAllRatings(value);
+            value = <div className='rating-info'>
+                <div>Оценило: {ratings.COUNT}</div>
+                <div>DETAILING: 
+                    <Rating
+                        style={{ maxWidth: 100 }}
+                        value={ratings.DETAILING}
+                        readOnly
+                        itemStyles={myStyles}
+                    />
+                </div>
+                <div>GRAPHIC: 
+                    <Rating
+                        style={{ maxWidth: 100 }}
+                        value={ratings.GRAPHIC}
+                        readOnly
+                        itemStyles={myStyles}
+                    />
+                </div>
+                <div>PLOT: 
+                    <Rating
+                        style={{ maxWidth: 100 }}
+                        value={ratings.PLOT}
+                        readOnly
+                        itemStyles={myStyles}
+                    />
+                </div>
+
+                <div>TOTAL: 
+                    <Rating
+                        style={{ maxWidth: 100 }}
+                        value={ratings.TOTAL}
+                        readOnly
+                        itemStyles={myStyles}
+                    />
+                </div>
+            </div>;
         }
 
         if (code === "TITLE") {

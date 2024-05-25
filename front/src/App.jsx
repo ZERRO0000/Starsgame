@@ -47,6 +47,10 @@ function App() {
                 />
 
                 <Container curPath={currentPath} edit={edit}></Container>
+
+                <footer>
+                    Кирилл Романенко, ©2024
+                </footer>
             </div>
         </>
     );
