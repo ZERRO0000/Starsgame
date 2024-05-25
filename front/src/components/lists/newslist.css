@@ -33,6 +33,7 @@
     z-index:0;
     opacity:0;
     transition: all .5s ease-out;
+    border-radius: 25px;
 }
 
 .App.dark .news-list .news-card {

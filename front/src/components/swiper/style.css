@@ -10,6 +10,10 @@
     text-align: center;
 }
 
+.name {
+    z-index: 1000;
+}
+
 .swiper-wrapper {
     width: 1500px;
 }
