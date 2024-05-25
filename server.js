@@ -1,4 +1,5 @@
 import express from 'express';
+import fileUpload from 'express-fileupload';
 import morgan from 'morgan';
 import Fetch from './back/modules/Fetch/index.js';
 import schema from './back/modules/Fetch/schema/index.js';
@@ -38,6 +39,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.urlencoded({extended: true}));
+app.use(fileUpload({}));
+app.use(express.static('front/public/uploads'));
 
 //GET requests
 app.get('/api/:CollectionName/', async (req, res) => {
@@ -104,7 +107,20 @@ app.get('/api/schema/get/:Schema/', async (req, res) => {
 app.post('/api/:CollectionName/', async (req, res) => {
     const collectionName = req.params.CollectionName.toLowerCase();
     const mdb = new Fetch.MongoDB(collectionName);
-    const result = await mdb.setValue(req.body);
+    let query = req.query;
+
+    if(req.files) {
+        for(let i in req.files) {
+            let file = req.files[i];
+            let fileName = 'uploads/' + file.name;
+            file.mv('front/public/' + fileName);
+            query[i] = fileName;
+        }
+    }
+
+    const result = await mdb.setValue(query);
+
+    console.log(result);
 
     if(result.acknowledged) {
         let newUrl = config.fullClient + collectionName + "?id=" + String(result.insertedId) + '&set=Y';

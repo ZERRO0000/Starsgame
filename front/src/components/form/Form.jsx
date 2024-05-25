@@ -14,9 +14,7 @@ import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale/ru';
 registerLocale('ru-RU', ru);
 
-
-
-export default function Form({nameForm, arValue}) {
+export default function Form({nameForm, arValue = {}}) {
     const [schema, setSchema] = useState(null);
     const [formValue, setFormValue] = useState({});
     const [url, setUrl] = useState(config.fullApi + nameForm + '/');
@@ -262,7 +260,7 @@ export default function Form({nameForm, arValue}) {
     }
     
     return (
-        <form className='editForm' method='POST' action={url} onChange={checkRequired}>
+        <form className='editForm' method='POST' encType='multipart/form-data' action={url} onChange={checkRequired}>
             { renderForm(schema, formValue) }
             <button disabled={disabled && disabled}>
                 {edit && 'Изменить'}

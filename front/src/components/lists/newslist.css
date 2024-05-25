@@ -12,19 +12,40 @@
     border:1px solid #555;
     padding:20px;
     border-radius: 25px;
-    transition: .2s linear;
     box-shadow: 0 8px 16px #00000033;
     margin-top: 20px;
+    position: relative;
+}
+
+.news-list .news-card .poster {
+    width:100%;
+    height:100%;
+    display:block;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index:0;
+    opacity:0;
+    transition: all .5s ease-out;
 }
 
 .news-list .news-card:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px #c5c5c5;
-    opacity: 0.9;
-    background-image: url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/620/ss_f3f6787d74739d3b2ec8a484b5c994b3d31ef325.1920x1080.jpg?t=1698805825');
-    transition: 1s;
     background-size: cover;
     color: #fff;
     transition-property: 1s;
+}
+
+
+.news-list .news-card:hover .poster{
+    opacity: .8;
+    transition: all .5s ease-in;
 }
 
 .news-list .news-card img {
@@ -48,6 +69,8 @@
     grid-column: span 3;
     text-align: justify;
     line-height: 30px;
+    position: relative;
+    z-index: 2;
 }
 /* 
 h3 {

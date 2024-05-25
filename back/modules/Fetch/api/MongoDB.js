@@ -4,7 +4,7 @@ import Controll from './Controll.js';
 
 export default class MongoDB {
     static #DBNAME = "starsgames"; //имя базы
-    static #LOCATION = "mongodb://localhost"; //127.0.0.1
+    static #LOCATION = "mongodb://127.0.0.1"; //127.0.0.1
     static #PORT = 27017; //порт
     static #LOGIN; //логин
     static #PSSWD; //пароль
@@ -192,7 +192,7 @@ export default class MongoDB {
             for(let i in item) {
                 let keyElement = item[i];
 
-                if(keyElement.ref) {
+                if(keyElement && keyElement.ref) {
                     if(!simId[keyElement.collectionName])
                         simId[keyElement.collectionName] = [];
 

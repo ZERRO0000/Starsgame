@@ -177,6 +177,12 @@ export default function NewsList({
             );
         }
 
+        if(code === 'FILE') {
+            value = (
+                <div style={{backgroundImage: 'url('+value+')'}} className='poster'></div>
+            )
+        }
+
         if (curSchema.type === "Rating") {
             value = (
                 <div className={"rating " + code.toLowerCase()}>

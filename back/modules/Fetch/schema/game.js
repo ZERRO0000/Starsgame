@@ -36,6 +36,14 @@ const game = {
         editable: true,
         searchable: true,
     },
+    FILE: {
+        type: 'File',
+        require: false,
+        loc: 'Обложка',
+        sort: false,
+        editable: true,
+        searchable: false
+    }
 };
 
 export default game;

@@ -14,7 +14,7 @@ export default class Controll {
         let data = {};
 
         //Если есть данный атрибут, то это будет сигналом для обновления, если нет - для добавления
-        if(query._id.length > 0) {
+        if(query._id && query._id.length > 0) {
             data._id = new ObjectId(query._id);
         }
 
@@ -35,11 +35,13 @@ export default class Controll {
                         case 'String':
                             case 'Phone':
                                 case 'Email':
+                                    case 'File':
                             data[i] = String(checkElement);
                         break;
 
                         case "Date":
-                            let d = checkElement.split('.');
+                            console.log(checkElement)
+                            let d = checkElement ? checkElement.split('.') : new Date('d.m.Y');
                             data[i] = new Date(d[2], d[1]-1, d[0]);
                         break;
 
