@@ -5,6 +5,14 @@ header {
     padding:17px 35px;
     font-weight: 500;
     font-family: var(--mainFontFamily);
+    position: fixed;
+    top:0;
+    z-index: 1000;
+    width:calc(-60px + 100%);
+}
+
+body {
+    padding-top: 64px;
 }
 
 header .LogoGroup {

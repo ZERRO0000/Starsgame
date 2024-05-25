@@ -109,7 +109,7 @@ export default function NewsList({
             let ratings = getAllRatings(value);
             value = <div className='rating-info'>
                 <div>Оценило: {ratings.COUNT}</div>
-                <div>DETAILING: 
+                <div> Детализация: 
                     <Rating
                         style={{ maxWidth: 100 }}
                         value={ratings.DETAILING}
@@ -117,7 +117,7 @@ export default function NewsList({
                         itemStyles={myStyles}
                     />
                 </div>
-                <div>GRAPHIC: 
+                <div>Графика: 
                     <Rating
                         style={{ maxWidth: 100 }}
                         value={ratings.GRAPHIC}
@@ -125,7 +125,7 @@ export default function NewsList({
                         itemStyles={myStyles}
                     />
                 </div>
-                <div>PLOT: 
+                <div>Сюжет: 
                     <Rating
                         style={{ maxWidth: 100 }}
                         value={ratings.PLOT}
@@ -134,7 +134,7 @@ export default function NewsList({
                     />
                 </div>
 
-                <div>TOTAL: 
+                <div>Среднее: 
                     <Rating
                         style={{ maxWidth: 100 }}
                         value={ratings.TOTAL}

@@ -10,15 +10,21 @@
 
 .news-list .news-card {
     border:1px solid #555;
-    padding:10px;
+    padding:20px;
     border-radius: 25px;
     transition: .2s linear;
     box-shadow: 0 8px 16px #00000033;
+    margin-top: 20px;
 }
 
 .news-list .news-card:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 4px #c5c5c5;
-    background: #c5c5c5;
+    opacity: 0.9;
+    background-image: url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/620/ss_f3f6787d74739d3b2ec8a484b5c994b3d31ef325.1920x1080.jpg?t=1698805825');
+    transition: 1s;
+    background-size: cover;
+    color: #fff;
+    transition-property: 1s;
 }
 
 .news-list .news-card img {
@@ -35,6 +41,13 @@
 
 .news-list .news-card span {
     margin-top:5px;
+}
+
+.news-list .rating-info {
+    font-weight: 500;
+    grid-column: span 3;
+    text-align: justify;
+    line-height: 30px;
 }
 /* 
 h3 {

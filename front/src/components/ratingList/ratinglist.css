@@ -19,6 +19,9 @@
 .news-card {
     display:grid;
     grid-template-columns: repeat(3, 33%);
+    text-align: justify;
+    line-height: 30px;
+    font-weight: 500;
 }
 
 .news-card .Author {
@@ -28,7 +31,11 @@
     font-weight: 500;
 }
 
-.news-card .game,
+.news-card .game {
+    grid-column: span 3;
+}
+
 .news-card .video {
     grid-column: span 3;
+    margin-top: 15px;
 }

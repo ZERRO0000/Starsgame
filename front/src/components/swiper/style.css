@@ -2,6 +2,8 @@
     width: 10000px;
     height: 500px;
     min-width: 0;
+    border-radius: 25px;
+    margin-top: 20px;
 }
 
 .slider-image {
@@ -14,5 +16,4 @@
 
 .slider-image img {
     max-width: 100%;
-    
 }
