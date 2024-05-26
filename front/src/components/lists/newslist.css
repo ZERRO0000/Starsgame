@@ -6,6 +6,7 @@
     grid-template-columns: repeat(4, auto);
     grid-auto-flow: row;
     gap: 20px;
+    margin-left: 235px;
 }
 
 .news-list .news-card {
@@ -37,7 +38,7 @@
 }
 
 .App.dark .news-list .news-card {
-    background-color: #222;
+    background-color: #1a1a1a;
 }
 
 .news-list .news-card:hover {

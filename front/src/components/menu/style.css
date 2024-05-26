@@ -37,14 +37,7 @@ menu li:hover::after {
     width: 100%;
 }
 
-menu li:active{
+menu li.selected::after {
+    background-color: #ffffff;
     width: 100%;
-}
-
-.App.dark menu li.selected {
-    background: #333;
-}
-
-.selected {
-    color: #5eff00;
 }

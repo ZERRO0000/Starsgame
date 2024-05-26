@@ -232,7 +232,6 @@ export default function Form({nameForm, arValue = {}}) {
     }
 
     function callMethod(event) {
-        console.log(event);
         let form = event.target.closest('form');
         let name = event.target.name;
         let obSchema = schema;

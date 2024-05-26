@@ -1,5 +1,5 @@
 .swiper {
-    width: 10000px;
+    width: 1500px;
     height: 500px;
     min-width: 0;
     border-radius: 25px;
@@ -10,8 +10,13 @@
     width: 1500px;
 }
 
+.link-game {
+    z-index: 1;
+}
+
 .slider-image {
     object-fit: cover;
     position: relative;
-    bottom: 250px;
+    bottom: 200px;
+    width: 1500px;
 }

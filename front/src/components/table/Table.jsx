@@ -112,7 +112,6 @@ export default function Table({nameTable, onChange, query = ''}) {
     
     function getContent(col, index, sim, schema) {
         let value = '';
-
         if(col.ref) {
             let val = sim[col.collectionName].filter(item => item._id === col._id)[0];
             value = val.TITLE;
@@ -207,7 +206,7 @@ export default function Table({nameTable, onChange, query = ''}) {
                                 <td>
                                     <button value={row._id} onClick={edit} className='edit'></button>
                                     <button value={row._id} onClick={drop} className='drop'></button>
-                                    {nameTable === 'game' && <button value={row._id} onClick={star} className='star'></button>}
+                                    {nameTable === 'games' && <button value={row._id} onClick={star} className='star'></button>}
                                 </td>
                             </tr>
                         ))

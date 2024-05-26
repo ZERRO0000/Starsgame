@@ -38,11 +38,11 @@ export default function Container({ curPath, edit }) {
     return ( 
         <div className={'container'}>   
 
-            { collectionName === 'game' && <Swiper></Swiper> }
+            { collectionName === 'games' && <Swiper></Swiper> }
 
             { !collectionName && <Index></Index>}
             
-            { curPath === 'game' && <NewsList collectionName={collectionName}></NewsList>}
+            { curPath === 'games' && <NewsList collectionName={collectionName}></NewsList>}
             
             { collectionName != 'undefined' && curPath === 'rating' && <RatingList collectionName={collectionName}></RatingList>}
 

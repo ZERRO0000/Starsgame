@@ -58,11 +58,6 @@
     color:#fff;
 }
 
-.simple-table tbody tr:focus {
-    background-color:#6b6b6b;
-    outline: 0;
-}
-
 .simple-table tbody tr td {
     padding:5px 20px;
     font-weight: 500;

@@ -1,4 +1,4 @@
-const game = {
+const games = {
     _id: {},
     TITLE: {
         type: 'String',
@@ -46,4 +46,4 @@ const game = {
     }
 };
 
-export default game;
+export default games;

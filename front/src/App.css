@@ -1,11 +1,13 @@
 .App {
   text-align: center;
   color:#333;
+  transition: 1s;
 }
 
 .App.dark {
-  background:#333;
+  background:#111;
   color:#fff;
+  transition: 1s;
 }
 
 .App-logo {
