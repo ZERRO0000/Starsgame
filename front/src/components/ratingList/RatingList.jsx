@@ -55,10 +55,10 @@ export default function RatingList({
 
     function getContent(col, index, sim, schema) {
         let value = '';
+        // console.log(schema)
 
         if(col.$ref) {
-            let val = sim[col.collectionName].filter(item => item._id === col._id)[0];
-            value = <div className='game'>Игра: <a href={'/game/?id=' + String(val._id)}>{val.TITLE}</a></div>;
+            value = <div className='games'>Игра: <a href={'/games/?id=' + String(col.$id)}>{schema.TITLE}</a></div>;
         }
         else {
             value = col;
@@ -108,13 +108,16 @@ export default function RatingList({
         <>
             <div className='news-list'> 
                 {ratingList &&
-                    ratingList.body.map(row => (
-                        <div className='news-card'>
-                            {
-                                Object.values(row).map((col, index) => (
-                                    getContent(col, index, ratingList.sim, ratingList.header)
-                                ))
-                            }
+                    ratingList.body.map((row, i)=> (
+                        <div key={i} className='news-card'>
+                            {Object.values(row).map((col, index) => 
+                                getContent(
+                                    col,
+                                    index,
+                                    ratingList.sim,
+                                    ratingList.header
+                                )
+                            )}
                         </div>
                     ))}
             </div>

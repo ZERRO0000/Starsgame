@@ -91,7 +91,6 @@ export default function NewsList({
 
     function getContent(col, index, sim, schema) {
         let value = "";
-        
         value = col;
         let getIndex = 0;
         let curSchema = 0;

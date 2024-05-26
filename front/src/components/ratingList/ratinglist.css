@@ -33,7 +33,7 @@
     z-index: 2;
 }
 
-.news-card .game {
+.news-card .games {
     grid-column: span 3;
 }
 
