@@ -31,23 +31,26 @@ export default class Controll {
                             data[i] = parseFloat(checkElement);
                         break;
 
-                        default:
-                        case 'String':
-                            case 'Phone':
-                                case 'Email':
-                                    case 'File':
-                            data[i] = String(checkElement);
-                        break;
-
-                        case "Date":
-                            console.log(checkElement)
-                            let d = checkElement ? checkElement.split('.') : new Date('d.m.Y');
+                        case 'Date':
+                            let d = checkElement.split('.');
                             data[i] = new Date(d[2], d[1]-1, d[0]);
                         break;
 
                         case 'DBRef':
                             let value = new DBRef(checkSchema.collection, new ObjectId(checkElement));
                             data[i] = value;
+                        break;
+
+                        case 'File':
+                            data[i] = checkElement;
+                        break;
+                        
+                        default:
+                        case 'String':
+                            case 'Phone':
+                                case 'Email':
+                                    case 'List':
+                            data[i] = String(checkElement);
                         break;
                     }
                 }
