@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "664760f38a16eaeab9ee1c2d"
+  },
+  "TITLE": {
+    "$ref": "game",
+    "$id": {
+      "$oid": "663a2da8d0f8cd223969b3db"
+    }
+  },
+  "PLOT": "5",
+  "GRAPHIC": "5",
+  "DETAILING": "5",
+  "LINK": "https://youtu.be/gmA6MrX81z4?si=rbrbjiaf3-kNyGDZ"
+},
+{
+  "_id": {
+    "$oid": "664783cfac0aceaf3df3baba"
+  },
+  "TITLE": {
+    "$ref": "game",
+    "$id": {
+      "$oid": "663a2da8d0f8cd223969b3db"
+    }
+  },
+  "PLOT": 0,
+  "GRAPHIC": 0,
+  "DETAILING": 0,
+  "LINK": "rating"
+},
+{
+  "_id": {
+    "$oid": "664783d7ac0aceaf3df3babb"
+  },
+  "TITLE": {
+    "$ref": "game",
+    "$id": {
+      "$oid": "663a2da8d0f8cd223969b3db"
+    }
+  },
+  "PLOT": "5",
+  "GRAPHIC": "5",
+  "DETAILING": "2",
+  "LINK": "w"
+},
+{
+  "_id": {
+    "$oid": "664783dfac0aceaf3df3babc"
+  },
+  "TITLE": {
+    "$ref": "game",
+    "$id": {
+      "$oid": "663a2da8d0f8cd223969b3db"
+    }
+  },
+  "PLOT": "3",
+  "GRAPHIC": "1",
+  "DETAILING": "4",
+  "LINK": "ee"
+},
+{
+  "_id": {
+    "$oid": "6647a5c9c49a971b1171901f"
+  },
+  "TITLE": {
+    "$ref": "game",
+    "$id": {
+      "$oid": "663a2da8d0f8cd223969b3db"
+    }
+  },
+  "PLOT": 0,
+  "GRAPHIC": 0,
+  "DETAILING": 0,
+  "LINK": "https://youtu.be/F6PqxbvOCUI?si=VEg3I74_DoV-BR3p"
+}]

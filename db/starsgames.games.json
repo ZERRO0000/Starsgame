@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "6652fcbebbf716d9c7999638"
+  },
+  "TITLE": "undefined",
+  "DATE": {
+    "$date": "1970-01-01T00:00:00.000Z"
+  },
+  "PUBLISHER": "undefined",
+  "GENRE": "undefined",
+  "FILE": "uploads/a55135684a.jpg"
+}]
