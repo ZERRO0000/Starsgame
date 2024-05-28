@@ -56,8 +56,9 @@ export default function RatingList({
     function getContent(col, index, sim, schema) {
         let value = '';
 
-        if(col.$ref) {
-            value = <div className='games'>Игра: <a href={'/games/?id=' + String(col.$id)}>{schema.TITLE}</a></div>;
+        if(col.ref || col.$ref) {
+            console.log(sim, col)
+            value = <div className='games'>Игра: <a href={'/games?id=' + String(col._id)}>{sim[col.collectionName][0].TITLE}</a></div>;
         }
         else {
             value = col;
@@ -109,14 +110,16 @@ export default function RatingList({
                 {ratingList &&
                     ratingList.body.map((row, i)=> (
                         <div key={i} className='news-card'>
-                            {Object.values(row).map((col, index) => 
+                            {
+                            Object.values(row).map((col, index) => 
                                 getContent(
                                     col,
                                     index,
                                     ratingList.sim,
                                     ratingList.header
                                 )
-                            )}
+                            )
+                            }
                         </div>
                     ))}
             </div>

@@ -16,7 +16,7 @@ const rating = {
         loc: "Игра",
         sort: true,
         editable: true,
-        collection: 'game'
+        collection: 'games'
     },
     PLOT: {
         type: 'Rating',
