@@ -35,6 +35,9 @@ export default () => {
             <SwiperSlide>
                 <img className='slider-image' src='https://i.pinimg.com/originals/e2/6f/ba/e26fba8d9f2102d2dd8699c80b8ddc78.jpg'></img>
             </SwiperSlide>
+            <SwiperSlide>
+                <img className='slider-image' src='https://wallbox.ru/wallpapers/main2/202053/kiberpank.jpg'></img>
+            </SwiperSlide>
         </Swiper>
     );
 };

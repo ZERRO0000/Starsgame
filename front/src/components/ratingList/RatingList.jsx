@@ -55,7 +55,6 @@ export default function RatingList({
 
     function getContent(col, index, sim, schema) {
         let value = '';
-        // console.log(schema)
 
         if(col.$ref) {
             value = <div className='games'>Игра: <a href={'/games/?id=' + String(col.$id)}>{schema.TITLE}</a></div>;

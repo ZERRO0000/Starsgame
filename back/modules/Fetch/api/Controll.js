@@ -25,8 +25,7 @@ export default class Controll {
                 let checkElement = query[i];
                 let checkSchema = this.schema[i];
 
-                if(checkElement != undefined) {
-                    console.log(checkElement)
+                if(checkElement != '') {
                     switch(checkSchema.type) {
                         case 'Number':
                             data[i] = parseFloat(checkElement);

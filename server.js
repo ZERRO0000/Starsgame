@@ -107,7 +107,7 @@ app.get('/api/schema/get/:Schema/', async (req, res) => {
 app.post('/api/:CollectionName/', async (req, res) => {
     const collectionName = req.params.CollectionName.toLowerCase();
     const mdb = new Fetch.MongoDB(collectionName);
-    let query = req.query;
+    let query = req.body;
 
     if(req.files) {
         for(let i in req.files) {

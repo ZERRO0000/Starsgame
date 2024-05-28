@@ -2,11 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import Form from "../form/Form.jsx";
 import Table from "../table/Table.jsx"; 
 import Index from '../index/Index.jsx';
-import HeaderTag from "../headertag/HeaderTag.jsx"; 
-import Search from "../search/Search.jsx";
 import NewsList from "../lists/NewsList.jsx";
 import RatingList from "../ratingList/RatingList.jsx";
 import Swiper from "../swiper/Swiper.jsx";
+import ChooseGame from "../choosing-game/Choosing-game.jsx";
 
 
 export default function Container({ curPath, edit }) {
@@ -45,6 +44,8 @@ export default function Container({ curPath, edit }) {
             { curPath === 'games' && <NewsList collectionName={collectionName}></NewsList>}
             
             { collectionName != 'undefined' && curPath === 'rating' && <RatingList collectionName={collectionName}></RatingList>}
+
+            { collectionName === 'game' && <ChooseGame></ChooseGame> }
 
             {
                 edit === true && 

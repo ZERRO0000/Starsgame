@@ -3,11 +3,12 @@ import "./newslist.css";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import config from "../../params/config";
+import ChooseGame from "../choosing-game/Choosing-game";
 
 //https://doka.guide/css/grid-guide/ - гайд по гридам
 
 export default function NewsList({
-    collectionName = "game",
+    collectionName = "games",
     limit,
     paginator = false,
 }) {
@@ -63,31 +64,30 @@ export default function NewsList({
         return true;
     }
 
-    function getAllRatings(id) {
-        //todo: fix this proiblem
-        let ratings = {};
+    // function getAllRatings(id) {
+    //     let ratings = {};
 
-        if(allRatings.body instanceof Array) {
-            let arRatings = allRatings.body.filter((item) => item._id === id);
-            let count = allRatings.body.length;
+    //     if(allRatings.body instanceof Array) {
+    //         let arRatings = allRatings.body.filter((item) => item._id === id);
+    //         let count = allRatings.body.length;
             
-            ratings.COUNT = count;
+    //         ratings.COUNT = count;
 
-            let DETAILING = 0, GRAPHIC = 0, PLOT = 0;
-            arRatings.map(item => {
-                DETAILING += parseInt(item.DETAILING);
-                GRAPHIC += parseInt(item.GRAPHIC);
-                PLOT += parseInt(item.PLOT);
-            });
+    //         let DETAILING = 0, GRAPHIC = 0, PLOT = 0;
+    //         arRatings.map(item => {
+    //             DETAILING += parseInt(item.DETAILING);
+    //             GRAPHIC += parseInt(item.GRAPHIC);
+    //             PLOT += parseInt(item.PLOT);
+    //         });
 
-            ratings.DETAILING = DETAILING / count;
-            ratings.GRAPHIC = GRAPHIC / count;
-            ratings.PLOT = PLOT / count;
-            ratings.TOTAL = (ratings.PLOT + ratings.GRAPHIC + ratings.DETAILING) / 3
-        }
+    //         ratings.DETAILING = DETAILING / count;
+    //         ratings.GRAPHIC = GRAPHIC / count;
+    //         ratings.PLOT = PLOT / count;
+    //         ratings.TOTAL = (ratings.PLOT + ratings.GRAPHIC + ratings.DETAILING) / 3
+    //     }
 
-        return ratings;
-    }
+    //     return ratings;
+    // }
 
     function getContent(col, index, sim, schema) {
         let value = "";
@@ -105,43 +105,7 @@ export default function NewsList({
         }
 
         if (code === "_id") {
-            let ratings = getAllRatings(value);
-            value = <div className='rating-info'>
-                <div>Оценило: {ratings.COUNT}</div>
-                <div> Детализация: 
-                    <Rating
-                        style={{ maxWidth: 100 }}
-                        value={ratings.DETAILING}
-                        readOnly
-                        itemStyles={myStyles}
-                    />
-                </div>
-                <div>Графика: 
-                    <Rating
-                        style={{ maxWidth: 100 }}
-                        value={ratings.GRAPHIC}
-                        readOnly
-                        itemStyles={myStyles}
-                    />
-                </div>
-                <div>Сюжет: 
-                    <Rating
-                        style={{ maxWidth: 100 }}
-                        value={ratings.PLOT}
-                        readOnly
-                        itemStyles={myStyles}
-                    />
-                </div>
-
-                <div>Среднее: 
-                    <Rating
-                        style={{ maxWidth: 100 }}
-                        value={ratings.TOTAL}
-                        readOnly
-                        itemStyles={myStyles}
-                    />
-                </div>
-            </div>;
+            value = false;
         }
 
         if (code === "TITLE") {
@@ -155,7 +119,7 @@ export default function NewsList({
         if (code === "DATE") {
             value = (
                 <div className="Author">
-                    Дата анонса : <span>{value.substring(0, 9)}</span>
+                    Дата анонса : <span>{value.substring(0, 10).split('-').join('.')}</span>
                 </div>
             );
         }
@@ -199,12 +163,17 @@ export default function NewsList({
         return <>{value !== false && value}</>;
     }
 
+    function choosegame(col) {
+        console.log(col)
+        //window.location = '/game?id=' + col;
+    }
+
     return (
         <>
             <div className="news-list">
                 {ready &&
                     newsList.body.map((row, i) => (
-                        <div key={i} className="news-card">
+                        <div key={i} className="news-card" onClick={choosegame}>
                             {Object.values(row).map((col, index) =>
                                 getContent(
                                     col,
