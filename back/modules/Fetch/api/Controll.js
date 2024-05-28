@@ -25,14 +25,17 @@ export default class Controll {
                 let checkElement = query[i];
                 let checkSchema = this.schema[i];
 
-                if(checkElement != '') {
+                if(checkElement != undefined) {
+                    console.log(checkElement)
                     switch(checkSchema.type) {
                         case 'Number':
                             data[i] = parseFloat(checkElement);
                         break;
 
                         case 'Date':
+                            
                             let d = checkElement.split('.');
+                            
                             data[i] = new Date(d[2], d[1]-1, d[0]);
                         break;
 
