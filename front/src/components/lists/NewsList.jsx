@@ -164,7 +164,7 @@ export default function NewsList({
     }
 
     function choosegame() {
-        window.location = '/game?id=';
+        window.location = '/rating';
     }
 
     return (

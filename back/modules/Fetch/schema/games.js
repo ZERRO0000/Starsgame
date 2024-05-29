@@ -37,7 +37,7 @@ const games = {
         searchable: true,
     },
     FILE: {
-        type: 'File',
+        type: 'String',
         require: false,
         loc: 'Обложка',
         sort: false,

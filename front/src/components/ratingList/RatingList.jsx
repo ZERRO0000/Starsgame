@@ -109,16 +109,14 @@ export default function RatingList({
                 {ratingList &&
                     ratingList.body.map((row, i)=> (
                         <div key={i} className='news-card'>
-                            {
-                            Object.values(row).map((col, index) => 
+                            {Object.values(row).map((col, index) => 
                                 getContent(
                                     col,
                                     index,
                                     ratingList.sim,
                                     ratingList.header
                                 )
-                            )
-                            }
+                            )}
                         </div>
                     ))}
             </div>
