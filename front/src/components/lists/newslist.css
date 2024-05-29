@@ -5,7 +5,7 @@
 
     grid-template-columns: repeat(3, auto);
     grid-auto-flow: row;
-    margin-left: 2 px;
+    margin-left: 235px;
     margin-right: 235px;
     gap: 20px;
 }
