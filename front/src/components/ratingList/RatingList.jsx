@@ -57,7 +57,6 @@ export default function RatingList({
         let value = '';
 
         if(col.ref || col.$ref) {
-            console.log(sim, col)
             value = <div className='games'>Игра: <a href={'/games?id=' + String(col._id)}>{sim[col.collectionName][0].TITLE}</a></div>;
         }
         else {

@@ -163,10 +163,8 @@ export default function NewsList({
         return <>{value !== false && value}</>;
     }
 
-    function choosegame(col) {
-        if(col === '_id') {
-            window.location = '/game?id=' + col;
-        }
+    function choosegame() {
+        window.location = '/game?id=';
     }
 
     return (
@@ -181,9 +179,6 @@ export default function NewsList({
                                     index,
                                     newsList.sim,
                                     newsList.header
-                                ),
-                                choosegame(
-                                    col,
                                 )
                             )}
                         </div>
