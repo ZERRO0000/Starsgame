@@ -1,12 +1,14 @@
 [{
   "_id": {
-    "$oid": "6626546d2cf96ad671c5aa00"
+    "$oid": "662909b7ce5a60baa6037ffc"
   },
   "NAME": "Рейтинг",
   "LINK": "rating"
 },
 {
   "_id": {
-    "$oid": "6654c157cedf7a60ae40fe21"
-  }
+    "$oid": "66290f9fbd13bd6ec74dc0bb"
+  },
+  "NAME": "Выбрать Игру",
+  "LINK": "games"
 }]

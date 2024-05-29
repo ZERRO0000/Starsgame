@@ -1,12 +1,72 @@
 [{
   "_id": {
-    "$oid": "6652fcbebbf716d9c7999638"
+    "$oid": "66570b39601e3748681d04ff"
   },
-  "TITLE": "undefined",
+  "TITLE": "RDR2",
   "DATE": {
-    "$date": "1970-01-01T00:00:00.000Z"
+    "$date": "2016-10-17T21:00:00.000Z"
   },
-  "PUBLISHER": "undefined",
-  "GENRE": "undefined",
-  "FILE": "uploads/a55135684a.jpg"
+  "PUBLISHER": "Rockstar Games",
+  "GENRE": "Шутер от третьего лица",
+  "FILE": "https://vkplay.ru/hotbox/content_files/game/2018/5/3bed8ab.jpeg"
+},
+{
+  "_id": {
+    "$oid": "66570c1f601e3748681d0500"
+  },
+  "TITLE": "GTAV",
+  "DATE": {
+    "$date": "2011-11-01T20:00:00.000Z"
+  },
+  "PUBLISHER": "Rockstar Games",
+  "GENRE": "Приключенческий боевик",
+  "FILE": "https://cdn.bynogame.com/games/gta5-1662829149472.webp"
+},
+{
+  "_id": {
+    "$oid": "66570d16601e3748681d0501"
+  },
+  "TITLE": "PORTAL2",
+  "DATE": {
+    "$date": "2010-03-04T21:00:00.000Z"
+  },
+  "PUBLISHER": "Valve Corporation",
+  "GENRE": "головоломка от первого лица",
+  "FILE": "https://ixbt.online/gametech/covers/2023/11/20/nova-filepond-yLEkEe.png"
+},
+{
+  "_id": {
+    "$oid": "66570e71601e3748681d0502"
+  },
+  "TITLE": "minicraft",
+  "DATE": {
+    "$date": "2011-11-17T20:00:00.000Z"
+  },
+  "PUBLISHER": "Mojang",
+  "GENRE": "песочница",
+  "FILE": "https://www.minecraft.net/content/dam/games/minecraft/key-art/Player-Parent-Onboarding_Carousel-Before-You-Begin_Create-a-Minecraft-Acct_1280x768.jpg"
+},
+{
+  "_id": {
+    "$oid": "66570fe1601e3748681d0503"
+  },
+  "TITLE": "cuphead",
+  "DATE": {
+    "$date": "2024-05-28T21:00:00.000Z"
+  },
+  "PUBLISHER": "StudioMDHR Entertainment",
+  "GENRE": "Run-and-gun",
+  "FILE": "https://store-images.s-microsoft.com/image/apps.58691.13670972585585116.3e5032b0-0174-4e7d-b3ed-55f9306df6f1.43a8fed1-666e-4825-bc59-b3ae825fe622"
+},
+{
+  "_id": {
+    "$oid": "66571080601e3748681d0504"
+  },
+  "TITLE": "far cry 6",
+  "DATE": {
+    "$date": "2024-05-28T21:00:00.000Z"
+  },
+  "PUBLISHER": "Ubisoft",
+  "GENRE": "шутер от первого лица",
+  "FILE": "https://store-images.s-microsoft.com/image/apps.55639.14115267245615103.8e12f551-059b-455a-97ec-4b8173f3621e.9f8ad06c-377d-4273-b93c-47d3bab4d919?q=90&w=480&h=270"
 }]
