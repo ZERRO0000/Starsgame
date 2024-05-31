@@ -92,6 +92,7 @@ export default function NewsList({
     function getContent(col, index, sim, schema) {
         let value = "";
         value = col;
+        console.log(value)
         let getIndex = 0;
         let curSchema = 0;
         let code = 0;
@@ -164,7 +165,7 @@ export default function NewsList({
     }
 
     function choosegame() {
-        window.location = '/rating';
+        window.location = '/game?id=';
     }
 
     return (
