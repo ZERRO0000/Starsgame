@@ -18,11 +18,6 @@ export default function Container({ curPath, edit }) {
             setRow(value.data[0]);
     }
 
-    const handleSearch = (value) => {
-        if(value)
-            setQuery(value);
-    }
-
     const setCollection = useCallback(async () => {
         if(curPath!=='index' && curPath != null)
             setCollectionName(curPath);

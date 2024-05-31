@@ -5,6 +5,40 @@
     gap:15px;
 }
 
+.rating-list {
+    display:grid;
+    width:100%;
+    flex-wrap:wrap;
+
+    grid-template-columns: repeat(3, auto);
+    grid-auto-flow: row;
+    margin-left: 235px;
+    margin-right: 235px;
+    gap: 20px;
+}
+
+.rating-list .news-card {
+    border:1px solid #555;
+    padding:20px;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px #00000033;
+    margin-top: 20px;
+    position: relative;
+    width:400px;
+    height:320px;
+}
+
+.App.dark .rating-list .news-card {
+    background-color: #1a1a1a;
+}
+
+.rating-list .news-card:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #c5c5c5;
+    background-size: cover;
+    color: #fff;
+    transition-property: 1s;
+}
+
 .rating-news-list .rating-news-card {
     width:calc(33% - 30px);
     border:1px solid #eee;

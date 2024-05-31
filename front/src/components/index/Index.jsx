@@ -1,18 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import config from "../../params/config";
-import { CChart } from '@coreui/react-chartjs';
 import '../table/style.css';
 
 export default function Index() {
     const [table, setTable] = useState({
         body: []
-    });
-
-    const [pie, setPie] = useState({
-        labels: [],
-        numbers: [],
-        indexes: [],
-        count: 1
     });
 
     const [loading, setLoading] = useState(false);
@@ -32,13 +24,6 @@ export default function Index() {
             indexes.push(item.INDEXES);
         })
 
-        setPie({
-            labels: labels,
-            numbers: numbers,
-            indexes: indexes,
-            count: labels.length
-        })
-
         setTable({
             body: unPreparedData
         });
@@ -48,32 +33,6 @@ export default function Index() {
     useEffect(
         () => {fetchTable()}, [fetchTable]
     );
-
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-    };
-
-    function getColors(count) {
-        if(count > 0) {
-            let arColors = [];
-            let arColorCode = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-            //rgb(255,255,255);
-            //hex #00000000
-
-            for(let j = 0; j < count; j++) {
-                let color = "#";
-
-                for(let i = 0; i < 6; i++) {
-                    color += arColorCode[getRandomInt(arColorCode.length)];
-                }
-
-                arColors.push(color);
-            }
-
-            return arColors;
-        }
-    }
 
     return (
         <>
@@ -101,56 +60,6 @@ export default function Index() {
                 }
             </tbody>
         </table>
-
-        <div>
-            <h3>Документы</h3>
-        <CChart
-            type="doughnut"
-            data={{
-                labels: pie.labels,
-                datasets: [
-                {
-                    data: pie.numbers,
-                    backgroundColor: getColors(pie.count),
-                },
-                ],
-            }}
-            options={{
-                plugins: {
-                legend: {
-                    labels: {
-                    //color: getStyle('--cui-body-color'),
-                    }
-                }
-                },
-            }}
-            />
-            </div>
-
-            <div>
-                <h3>Индексы</h3>
-                <CChart
-                    type="doughnut"
-                    data={{
-                        labels: pie.labels,
-                        datasets: [
-                        {
-                            backgroundColor: getColors(pie.count),
-                            data: pie.indexes,
-                        },
-                        ],
-                    }}
-                    options={{
-                        plugins: {
-                        legend: {
-                            labels: {
-                            //color: getStyle('--cui-body-color'),
-                            }
-                        }
-                        },
-                    }}
-                    />
-            </div>
         </>
     )
 }

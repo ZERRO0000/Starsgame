@@ -2,6 +2,7 @@
   text-align: center;
   color:#333;
   transition: 1s;
+  min-height: 100vh;
 }
 
 .App.dark {

@@ -105,7 +105,7 @@ export default function RatingList({
 
     return (
         <>
-            <div className='news-list'> 
+            <div className='rating-list'> 
                 {ratingList &&
                     ratingList.body.map((row, i)=> (
                         <div key={i} className='news-card'>
