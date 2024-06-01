@@ -3,7 +3,6 @@ import "./App.css";
 import Container from "./components/container/Container.jsx";
 import Route from "./modules/Route.js";
 import { useState, useEffect, useCallback } from "react";
-import RatingList from "./components/ratingList/RatingList.jsx";
 
 function App() {
     const [currentPath, setCurrentPath] = useState("index");

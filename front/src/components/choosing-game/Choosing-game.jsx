@@ -19,7 +19,7 @@ export default function ChooseGame({
 
     return (
         <>
-            <img src="https://ixbt.com/img/r30/00/02/27/76/shot12.jpg"></img>
+            <img src=''></img>
         </>
     );
 }
